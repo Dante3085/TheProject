@@ -14,6 +14,7 @@ public:
 	void UpdatePreviousStates();
 
 	bool OnKeyDown(Keyboard::Key key);
+	bool IsKeyDown(Keyboard::Key key);
 
 private:
 	std::map<Keyboard::Key, bool> m_currentKeyStates;

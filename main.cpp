@@ -19,6 +19,9 @@ int main()
 		if (manager.OnKeyDown(Keyboard::Key::Space))
 			std::cout << "Pressed Space" << std::endl;
 
+		if (manager.IsKeyDown(Keyboard::Key::BackSpace))
+			std::cout << "Pressed Backspace" << std::endl;
+
 		manager.UpdatePreviousStates();
 	}
 

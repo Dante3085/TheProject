@@ -42,10 +42,22 @@ void InputManager::UpdatePreviousStates()
 
 
 /**
- * \brief Gets whether or not key was not pressed and is now pressed (=KeyPress that ignores holding)
+ * \brief Gets whether or not key was previously not pressed and is now pressed (=KeyPress that ignores holding)
  */
-bool InputManager::OnKeyDown(sf::Keyboard::Key key)
+bool InputManager::OnKeyDown(Keyboard::Key key)
 {
 	// Note: If [] - operator does not find key, it inserts new element with that key (see: http://www.cplusplus.com/reference/map/map/operator[]/)
 	return !m_previousKeyStates[key] && m_currentKeyStates[key];
+}
+
+/**
+ * \brief Gets whether or not key was previously pressed and is now pressed as well (=KeyPress with holding)
+ */
+bool InputManager::IsKeyDown(Keyboard::Key key)
+{
+	// IsKeyDown funktioniert nicht, wenn keys nicht vorher drinn waren. Deswegen hier der Check.
+	m_previousKeyStates[key];
+	m_currentKeyStates[key];
+
+	return m_previousKeyStates[key] && m_currentKeyStates[key];
 }
