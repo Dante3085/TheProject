@@ -4,6 +4,9 @@
 
 using namespace sf;
 
+/**
+ * \brief Sollte eher Namespace sein. Klassen nur mit statischen Funktionen sind nicht sinnvoll
+ */
 class InputManager
 {
 public:
@@ -14,6 +17,8 @@ public:
 	void UpdatePreviousStates();
 
 	bool OnKeyDown(Keyboard::Key key);
+	bool OnDoubleKeyDown(Keyboard::Key key);
+
 	bool IsKeyDown(Keyboard::Key key);
 
 private:
