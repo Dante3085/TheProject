@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <unordered_map>
+#include <map>
+
+using namespace sf;
 
 class InputManager
 {
@@ -11,8 +13,10 @@ public:
 	void UpdateCurrentStates();
 	void UpdatePreviousStates();
 
+	bool OnKeyDown(Keyboard::Key key);
+
 private:
-	std::unordered_map<sf::Keyboard::Key, bool> m_currentKeyStates;
-	std::unordered_map<sf::Keyboard::Key, bool> m_previousKeyStates;
+	std::map<Keyboard::Key, bool> m_currentKeyStates;
+	std::map<Keyboard::Key, bool> m_previousKeyStates;
 };
 

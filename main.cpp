@@ -1,28 +1,25 @@
 #include <iostream>
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "InputManager.h"
 
 using namespace sf;
 
 int main()
 {
-	int counter = 0;
-	bool current = false;
-	bool previous = false;
+	InputManager manager;
 
 	while(true)
 	{
-		current = Keyboard::isKeyPressed(Keyboard::Key::Return);
-		// std::cout << "Current: " << current << std::endl;
+		manager.UpdateCurrentStates();
 
-		// std::cout << "Counter: " << counter++ << std::endl;
+		if (manager.OnKeyDown(Keyboard::Key::Return))
+			std::cout << "Pressed Return" << std::endl;
 
-		if (!previous && current)
-			std::cout << "Enter" << std::endl;
+		if (manager.OnKeyDown(Keyboard::Key::Space))
+			std::cout << "Pressed Space" << std::endl;
 
-		previous = current;
-		// std::cout << "Previous: " << previous << std::endl;
-
+		manager.UpdatePreviousStates();
 	}
 
 	std::cout << "Press Enter to continue..." << std::endl;
