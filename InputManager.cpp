@@ -52,6 +52,7 @@ bool InputManager::OnKeyDown(Keyboard::Key key)
 
 /**
  * \brief Gets whether or not key was previously pressed and is now pressed as well (=KeyPress with holding)
+ * \bug Triggers after a short delay (~500ms) when placed inside window loop.
  */
 bool InputManager::IsKeyDown(Keyboard::Key key)
 {
