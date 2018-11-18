@@ -1,4 +1,6 @@
-#pragma once
+#ifndef UTILS_H
+#define UTILS_H
+
 #include <iostream>
 
 /**
@@ -15,3 +17,5 @@ namespace Utils
 		std::cin.get();
 	}
 }
+
+#endif

@@ -14,6 +14,14 @@ int main()
 	sf::RectangleShape shape(Vector2<float>(100, 100));
 	shape.setFillColor(sf::Color::Green);
 
+	sf::Texture tex;
+	tex.loadFromFile("beer2.jpg");
+
+	sf::Sprite sprite{ tex };
+	sprite.setTextureRect(sf::IntRect(100, 100, 100, 100));
+	sprite.setColor(sf::Color(255, 255, 255, 200));
+	sprite.setPosition(0, 0);
+
 	float speed = 0.3;
 
 	while (window.isOpen())
@@ -64,6 +72,7 @@ int main()
 
 		window.clear();
 		window.draw(shape);
+		window.draw(sprite);
 		window.display();
 	}
 

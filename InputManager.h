@@ -1,4 +1,7 @@
-#pragma once
+#ifndef INPUT_MANAGER_H
+#define INPUT_MANAGER_H
+
+
 #include <SFML/Graphics.hpp>
 #include <map>
 
@@ -26,3 +29,4 @@ private:
 	std::map<Keyboard::Key, bool> m_previousKeyStates;
 };
 
+#endif
