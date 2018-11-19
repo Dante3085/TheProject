@@ -25,9 +25,18 @@ var NAVTREE =
 [
   [ "TheProject", "index.html", [
     [ "TheProject", "md__c_1_2__i_t__informatik_2__programmierung_1__m_s_v_s2017_entwicklung_1__projekte__the_project69d0b16be0821ba52b290d38ffbeccf6.html", null ],
+    [ "Bug List", "bug.html", null ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ]
+      ] ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ]
@@ -37,7 +46,9 @@ var NAVTREE =
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ]
+        [ "Functions", "globals_func.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
+        [ "Enumerator", "globals_eval.html", null ]
       ] ]
     ] ]
   ] ]
@@ -45,7 +56,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_input_manager_8cpp.html"
+"_drawable_entity_8h.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

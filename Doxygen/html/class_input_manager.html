@@ -93,6 +93,9 @@ $(document).ready(function(){initNavTree('class_input_manager.html','');});
 </div><!--header-->
 <div class="contents">
 
+<p>Sollte eher Namespace sein. Klassen nur mit statischen Funktionen sind nicht sinnvoll.  
+ <a href="class_input_manager.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_input_manager_8h_source.html">InputManager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -110,10 +113,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ac965e4ef52a8a7753c106f2bcae64e21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates previous Key States. Call after you'r Key-Operations.  <a href="#ac965e4ef52a8a7753c106f2bcae64e21">More...</a><br /></td></tr>
 <tr class="separator:ac965e4ef52a8a7753c106f2bcae64e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a426512406d24de8dd5f0fb2241f6ea3c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_manager.html#a426512406d24de8dd5f0fb2241f6ea3c">OnKeyDown</a> (Keyboard::Key key)</td></tr>
-<tr class="memdesc:a426512406d24de8dd5f0fb2241f6ea3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets whether or not key was not pressed and is now pressed (=KeyPress that ignores holding)  <a href="#a426512406d24de8dd5f0fb2241f6ea3c">More...</a><br /></td></tr>
+<tr class="memdesc:a426512406d24de8dd5f0fb2241f6ea3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets whether or not key was previously not pressed and is now pressed (=KeyPress that ignores holding)  <a href="#a426512406d24de8dd5f0fb2241f6ea3c">More...</a><br /></td></tr>
 <tr class="separator:a426512406d24de8dd5f0fb2241f6ea3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e80afe2aecb16c9a9b45a111b7f83a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_manager.html#a1e80afe2aecb16c9a9b45a111b7f83a5">OnDoubleKeyDown</a> (Keyboard::Key key)</td></tr>
+<tr class="separator:a1e80afe2aecb16c9a9b45a111b7f83a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf3316661127cbdda5f0bd09cdc46a43"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_manager.html#acf3316661127cbdda5f0bd09cdc46a43">IsKeyDown</a> (Keyboard::Key key)</td></tr>
+<tr class="memdesc:acf3316661127cbdda5f0bd09cdc46a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets whether or not key was previously pressed and is now pressed as well (=KeyPress with holding)  <a href="#acf3316661127cbdda5f0bd09cdc46a43">More...</a><br /></td></tr>
+<tr class="separator:acf3316661127cbdda5f0bd09cdc46a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Sollte eher Namespace sein. Klassen nur mit statischen Funktionen sind nicht sinnvoll. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8be46886da639b26d67181c29dab6d6c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8be46886da639b26d67181c29dab6d6c">&#9670;&nbsp;</a></span>InputManager()</h2>
 
@@ -153,6 +163,46 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="acf3316661127cbdda5f0bd09cdc46a43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf3316661127cbdda5f0bd09cdc46a43">&#9670;&nbsp;</a></span>IsKeyDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool InputManager::IsKeyDown </td>
+          <td>(</td>
+          <td class="paramtype">Keyboard::Key&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets whether or not key was previously pressed and is now pressed as well (=KeyPress with holding) </p>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug:</a></b></dt><dd>Triggers after a short delay (~500ms) when placed inside window loop. <br />
+ </dd></dl>
+
+</div>
+</div>
+<a id="a1e80afe2aecb16c9a9b45a111b7f83a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e80afe2aecb16c9a9b45a111b7f83a5">&#9670;&nbsp;</a></span>OnDoubleKeyDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool InputManager::OnDoubleKeyDown </td>
+          <td>(</td>
+          <td class="paramtype">Keyboard::Key&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a426512406d24de8dd5f0fb2241f6ea3c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a426512406d24de8dd5f0fb2241f6ea3c">&#9670;&nbsp;</a></span>OnKeyDown()</h2>
 
@@ -169,7 +219,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gets whether or not key was not pressed and is now pressed (=KeyPress that ignores holding) </p>
+<p>Gets whether or not key was previously not pressed and is now pressed (=KeyPress that ignores holding) </p>
 
 </div>
 </div>

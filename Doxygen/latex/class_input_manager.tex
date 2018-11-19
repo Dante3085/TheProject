@@ -2,6 +2,11 @@
 \label{class_input_manager}\index{Input\+Manager@{Input\+Manager}}
 
 
+Sollte eher Namespace sein. Klassen nur mit statischen Funktionen sind nicht sinnvoll.  
+
+
+
+
 {\ttfamily \#include $<$Input\+Manager.\+h$>$}
 
 \subsection*{Public Member Functions}
@@ -16,8 +21,15 @@ void \mbox{\hyperlink{class_input_manager_a93883ab3c8f5bee33e66107515acc3e8}{Upd
 void \mbox{\hyperlink{class_input_manager_ac965e4ef52a8a7753c106f2bcae64e21}{Update\+Previous\+States}} ()
 \begin{DoxyCompactList}\small\item\em Updates previous Key States. Call after you\textquotesingle{}r Key-\/\+Operations. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_input_manager_a426512406d24de8dd5f0fb2241f6ea3c}{On\+Key\+Down}} (Keyboard\+::\+Key key)
-\begin{DoxyCompactList}\small\item\em Gets whether or not key was not pressed and is now pressed (=Key\+Press that ignores holding) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets whether or not key was previously not pressed and is now pressed (=Key\+Press that ignores holding) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_input_manager_a1e80afe2aecb16c9a9b45a111b7f83a5}{On\+Double\+Key\+Down}} (Keyboard\+::\+Key key)
+\item 
+bool \mbox{\hyperlink{class_input_manager_acf3316661127cbdda5f0bd09cdc46a43}{Is\+Key\+Down}} (Keyboard\+::\+Key key)
+\begin{DoxyCompactList}\small\item\em Gets whether or not key was previously pressed and is now pressed as well (=Key\+Press with holding) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Sollte eher Namespace sein. Klassen nur mit statischen Funktionen sind nicht sinnvoll. 
 
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_input_manager_a8be46886da639b26d67181c29dab6d6c}\label{class_input_manager_a8be46886da639b26d67181c29dab6d6c}} 
@@ -43,6 +55,25 @@ Destructor.
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_input_manager_acf3316661127cbdda5f0bd09cdc46a43}\label{class_input_manager_acf3316661127cbdda5f0bd09cdc46a43}} 
+\index{Input\+Manager@{Input\+Manager}!Is\+Key\+Down@{Is\+Key\+Down}}
+\index{Is\+Key\+Down@{Is\+Key\+Down}!Input\+Manager@{Input\+Manager}}
+\subsubsection{\texorpdfstring{Is\+Key\+Down()}{IsKeyDown()}}
+{\footnotesize\ttfamily bool Input\+Manager\+::\+Is\+Key\+Down (\begin{DoxyParamCaption}\item[{Keyboard\+::\+Key}]{key }\end{DoxyParamCaption})}
+
+
+
+Gets whether or not key was previously pressed and is now pressed as well (=Key\+Press with holding) 
+
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000001}{Bug}}]Triggers after a short delay ($\sim$500ms) when placed inside window loop. ~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{class_input_manager_a1e80afe2aecb16c9a9b45a111b7f83a5}\label{class_input_manager_a1e80afe2aecb16c9a9b45a111b7f83a5}} 
+\index{Input\+Manager@{Input\+Manager}!On\+Double\+Key\+Down@{On\+Double\+Key\+Down}}
+\index{On\+Double\+Key\+Down@{On\+Double\+Key\+Down}!Input\+Manager@{Input\+Manager}}
+\subsubsection{\texorpdfstring{On\+Double\+Key\+Down()}{OnDoubleKeyDown()}}
+{\footnotesize\ttfamily bool Input\+Manager\+::\+On\+Double\+Key\+Down (\begin{DoxyParamCaption}\item[{Keyboard\+::\+Key}]{key }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{class_input_manager_a426512406d24de8dd5f0fb2241f6ea3c}\label{class_input_manager_a426512406d24de8dd5f0fb2241f6ea3c}} 
 \index{Input\+Manager@{Input\+Manager}!On\+Key\+Down@{On\+Key\+Down}}
 \index{On\+Key\+Down@{On\+Key\+Down}!Input\+Manager@{Input\+Manager}}
@@ -51,7 +82,7 @@ Destructor.
 
 
 
-Gets whether or not key was not pressed and is now pressed (=Key\+Press that ignores holding) 
+Gets whether or not key was previously not pressed and is now pressed (=Key\+Press that ignores holding) 
 
 \mbox{\Hypertarget{class_input_manager_a93883ab3c8f5bee33e66107515acc3e8}\label{class_input_manager_a93883ab3c8f5bee33e66107515acc3e8}} 
 \index{Input\+Manager@{Input\+Manager}!Update\+Current\+States@{Update\+Current\+States}}

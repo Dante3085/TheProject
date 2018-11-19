@@ -10,8 +10,32 @@ public:
 	State(std::vector<Entity*>* entities, std::vector<EState>* next);
 	~State();
 
+
+	/**
+	 * \brief 
+	 * \param gameTime Again, GameTime class with more information would be better (elapsed, etc.)
+	 */
 	void update(float gameTime);
+
+
+	/**
+	 * \brief Draws all DrawableEntities of this State
+	 */
 	void draw(/* TODO */);
+
+
+	/**
+	 * \brief Returns std::vector with all Entities of this State
+	 * \return std::vector wit all Entities of this State
+	 */
+	std::vector<Entity*>* getEntities();
+
+
+	/**
+	 * \brief Returns std::vector with EState "references" of all States that can be reached by this State
+	 * \return std::vector with EState "references" of all States that can be reached by this State
+	 */
+	std::vector<EState>* getNext();
 
 private:
 
