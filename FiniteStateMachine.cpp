@@ -1,60 +1,78 @@
 #include "FiniteStateMachine.h"
+#include <algorithm>
 
-FiniteStateMachine::FiniteStateMachine()
-	: m_states{new std::map<EState, State*>}, m_startState(none), m_endState(none)
+namespace TheProject
 {
-}
+
+	FiniteStateMachine::FiniteStateMachine()
+		: m_states{ new std::map<EState, State*> }, m_startState(none), m_endState(none)
+	{
+		m_states->insert(std::pair<EState, State*>(none, new State));
+		m_states->insert(std::pair<EState, State*>(inventory, new State));
+	}
 
 
-FiniteStateMachine::FiniteStateMachine(std::map<EState, State*>* states, EState startState, EState endState)
-	: m_states{states}, m_startState{startState}, m_endState{endState}
-{
-}
+	FiniteStateMachine::FiniteStateMachine(std::map<EState, State*>* states, EState startState, EState endState)
+		: m_states{ states }, m_startState{ startState }, m_endState{ endState }
+	{
+	}
 
-FiniteStateMachine::~FiniteStateMachine()
-{
-}
+	FiniteStateMachine::~FiniteStateMachine()
+	{
+	}
 
-void FiniteStateMachine::update(float gameTime)
-{
-	m_states->at(m_currentState)->update(gameTime);
-}
+	void FiniteStateMachine::update(float gameTime)
+	{
+		m_states->at(m_currentState)->update(gameTime);
+	}
 
-void FiniteStateMachine::draw()
-{
-	m_states->at(m_currentState)->draw();
-}
+	void FiniteStateMachine::draw()
+	{
+		m_states->at(m_currentState)->draw();
+	}
 
-bool FiniteStateMachine::change(EState state)
-{
-	// Check if state is in m_states (http://www.cplusplus.com/reference/map/map/count/)
-	if (m_states->count(state) == 0)
-		return false;
+	bool FiniteStateMachine::change(EState state)
+	{
+		// Check if state is known to this FiniteStateMachine (http://www.cplusplus.com/reference/map/map/count/)
+		if (m_states->count(state) == 0)
+			return false;
 
-	std::vector<EState>* test = m_states->at(state)->getNext();
-	if (m_states->at(state)->getNext().)
-}
+		// Check if currentState of this FiniteStateMachine can transition to State
+		std::vector<EState>* next = m_states->at(m_currentState)->getNext();
+		if (!(std::find(next->begin(), next->end(), state) != next->end()))
+			return false;
 
-void FiniteStateMachine::reset()
-{
-}
+		// Call onExit on currentState
+		m_states->at(m_currentState)->onExit();
 
-void FiniteStateMachine::terminate()
-{
-}
+		// Call onEnter on state
+		m_states->at(state)->onEnter();
 
-std::map<EState, State*>* FiniteStateMachine::getStates()
-{
-}
+		// Set currentState to state
+		m_currentState = state;
+	}
 
-EState FiniteStateMachine::getCurrentState()
-{
-}
+	void FiniteStateMachine::reset()
+	{
+	}
 
-EState FiniteStateMachine::getStartState()
-{
-}
+	void FiniteStateMachine::terminate()
+	{
+	}
 
-EState FiniteStateMachine::getEndState()
-{
+	std::map<EState, State*>* FiniteStateMachine::getStates()
+	{
+	}
+
+	EState FiniteStateMachine::getCurrentState()
+	{
+	}
+
+	EState FiniteStateMachine::getStartState()
+	{
+	}
+
+	EState FiniteStateMachine::getEndState()
+	{
+	}
 }

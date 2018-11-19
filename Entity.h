@@ -1,10 +1,12 @@
 #pragma once
 
-
-class Entity
+namespace TheProject
 {
-public:
-	virtual void update(float gameTime) = 0;
+	class Entity
+	{
+	public:
+		virtual void update(float gameTime) = 0;
 
-private:
-};
+	private:
+	};
+}

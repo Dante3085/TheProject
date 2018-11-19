@@ -3,8 +3,10 @@
 #include <SFML/Graphics.hpp>
 #include "InputManager.h"
 #include "Utils.h"
+#include "FiniteStateMachine.h"
 
 using namespace sf;
+using namespace TheProject;
 
 int main()
 {
@@ -22,7 +24,8 @@ int main()
 	sprite.setColor(sf::Color(255, 255, 255, 200));
 	sprite.setPosition(0, 0);
 
-	float speed = 0.3;
+	float speed = 0.3f;
+	FiniteStateMachine fsm{};
 
 	while (window.isOpen())
 	{
@@ -52,6 +55,9 @@ int main()
 		else
 			speed = 0.3;
 
+		if (manager.OnKeyDown(Keyboard::Key::Return))
+			fsm.change(inventory);
+
 		manager.UpdatePreviousStates();
 
 		// Left Wall
@@ -69,6 +75,9 @@ int main()
 		// Down Wall
 		if (shape.getPosition().y + shape.getSize().y > window.getSize().y)
 			shape.setPosition(shape.getPosition().x, window.getSize().y - shape.getSize().y);
+
+		fsm.update(3.14);
+		fsm.draw();
 
 		window.clear();
 		window.draw(shape);

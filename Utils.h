@@ -1,21 +1,21 @@
-#ifndef UTILS_H
-#define UTILS_H
+#pragma once
 
 #include <iostream>
 
-/**
- * \brief Contains static functions that serve general purposes
- */
-namespace Utils
+namespace TheProject
 {
 	/**
-	 * \brief Pauses the Console until Enter/Return is pressed.
+	 * \brief Contains static functions that serve general purposes
 	 */
-	void PauseConsole()
+	namespace Utils
 	{
-		std::cout << "Press Enter/Return to continue...";
-		std::cin.get();
+		/**
+		 * \brief Pauses the Console until Enter/Return is pressed.
+		 */
+		void PauseConsole()
+		{
+			std::cout << "Press Enter/Return to continue...";
+			std::cin.get();
+		}
 	}
 }
-
-#endif

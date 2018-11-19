@@ -1,124 +1,123 @@
-#ifndef FINITE_STATE_MACHINE_H
-#define FINITE_STATE_MACHINE_H
+#pragma once
 
 #include "State.h"
 #include <map>
 
-/**
- * \brief Enum used to quickly access State objects inside std::map states of this FiniteStateMachine
- */
-enum EState
+namespace TheProject
 {
-
 	/**
-	 * \brief Represents the absence of a State
+	 * \brief Enum used to quickly access State objects inside std::map states of this FiniteStateMachine
 	 */
-	none,
+	enum EState
+	{
+		/**
+		 * \brief Represents the absence of a State
+		 */
+		none,
 
-	/**
-	 * \brief Represents the Inventory State
-	 */
-	inventory, 
-
-
-	/**
-	 * \brief Represents MainMenu State
-	 */
-	mainMenu,
-};
-
-class FiniteStateMachine
-{
-public:
-	FiniteStateMachine();
-	FiniteStateMachine(std::map<EState, State*>* states, EState startState, EState endState);
-	~FiniteStateMachine();
+		/**
+		 * \brief Represents the Inventory State
+		 */
+		inventory,
 
 
-	/**
-	 * \brief Updates the currentState of this FiniteStateMachine
-	 * \param gameTime ???? Besser wäre GameTime Klasse mit mehreren Informationen (elapsed, etc.)
-	 */
-	void update(float gameTime);
+		/**
+		 * \brief Represents MainMenu State
+		 */
+		mainMenu,
+	};
+
+	class FiniteStateMachine
+	{
+	public:
+		FiniteStateMachine();
+		FiniteStateMachine(std::map<EState, State*>* states, EState startState, EState endState);
+		~FiniteStateMachine();
 
 
-	/**
-	 * \brief Draws currentState of this FiniteStateMachine
-	 */
-	void draw();
+		/**
+		 * \brief Updates the currentState of this FiniteStateMachine
+		 * \param gameTime ???? Besser wäre GameTime Klasse mit mehreren Informationen (elapsed, etc.)
+		 */
+		void update(float gameTime);
 
 
-	/**
-	 * \brief If possible, changes currentState of this FiniteStateMachine to state
-	 * \param state State that will be currentState if change() is successful
-	 * \return True if change to state was successful, else false
-	 */
-	bool change(EState state);
+		/**
+		 * \brief Draws currentState of this FiniteStateMachine
+		 */
+		void draw();
 
 
-	/**
-	 * \brief Resets this FiniteStateMachine(i.e. Restores initial "State"(colloquial) of this FiniteStateMachine)
-	 */
-	void reset();
+		/**
+		 * \brief If possible, changes currentState of this FiniteStateMachine to state
+		 * \param state State that will be currentState if change() is successful
+		 * \return True if change to state was successful, else false
+		 */
+		bool change(EState state);
 
 
-	/**
-	 * \brief Terminates this FiniteStateMachine(i.e. ????)
-	 */
-	void terminate();
+		/**
+		 * \brief Resets this FiniteStateMachine(i.e. Restores initial "State"(colloquial) of this FiniteStateMachine)
+		 */
+		void reset();
 
 
-	/**
-	 * \brief Returns std::map with all States of this FiniteStateMachine
-	 * \return std::map with all States of this FiniteStateMachine
-	 */
-	std::map<EState, State*>* getStates();
+		/**
+		 * \brief Terminates this FiniteStateMachine(i.e. ????)
+		 */
+		void terminate();
 
 
-	/**
-	 * \brief Returns EState currentState of this FiniteStateMachine
-	 * \return EState currentState of this FiniteStateMachine
-	 */
-	EState getCurrentState();
-
-	/**
-	 * \brief Returns EState startState of this FiniteStateMachine
-	 * \return EState startState of this FiniteStateMachine
-	 */
-	EState getStartState();
+		/**
+		 * \brief Returns std::map with all States of this FiniteStateMachine
+		 * \return std::map with all States of this FiniteStateMachine
+		 */
+		std::map<EState, State*>* getStates();
 
 
-	/**
-	 * \brief Returns EState endState of this FiniteStateMachine
-	 * \return EState endState of this FiniteStateMachine
-	 */
-	EState getEndState();
+		/**
+		 * \brief Returns EState currentState of this FiniteStateMachine
+		 * \return EState currentState of this FiniteStateMachine
+		 */
+		EState getCurrentState();
 
-private:
-
-
-	/**
-	 * \brief std::map with all States of this FiniteStateMachine
-	 */
-	std::map<EState, State*>* m_states;
+		/**
+		 * \brief Returns EState startState of this FiniteStateMachine
+		 * \return EState startState of this FiniteStateMachine
+		 */
+		EState getStartState();
 
 
-	/**
-	 * \brief EState currentState of this FiniteStateMachine
-	 */
-	EState m_currentState;
+		/**
+		 * \brief Returns EState endState of this FiniteStateMachine
+		 * \return EState endState of this FiniteStateMachine
+		 */
+		EState getEndState();
+
+	private:
 
 
-	/**
-	 * \brief EState startState of this FiniteStateMachine
-	 */
-	EState m_startState;
+		/**
+		 * \brief std::map with all States of this FiniteStateMachine
+		 */
+		std::map<EState, State*>* m_states;
 
 
-	/**
-	 * \brief EState endState of this FiniteStateMachine
-	 */
-	EState m_endState;
-};
+		/**
+		 * \brief EState currentState of this FiniteStateMachine
+		 */
+		EState m_currentState;
 
-#endif
+
+		/**
+		 * \brief EState startState of this FiniteStateMachine
+		 */
+		EState m_startState;
+
+
+		/**
+		 * \brief EState endState of this FiniteStateMachine
+		 */
+		EState m_endState;
+	};
+}
