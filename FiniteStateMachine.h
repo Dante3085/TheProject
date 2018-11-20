@@ -1,31 +1,12 @@
 #pragma once
 
-#include "State.h"
+#include "Enums.h"
 #include <map>
 
 namespace TheProject
 {
-	/**
-	 * \brief Enum used to quickly access State objects inside std::map states of this FiniteStateMachine
-	 */
-	enum EState
-	{
-		/**
-		 * \brief Represents the absence of a State
-		 */
-		none,
-
-		/**
-		 * \brief Represents the Inventory State
-		 */
-		inventory,
-
-
-		/**
-		 * \brief Represents MainMenu State
-		 */
-		mainMenu,
-	};
+	// Forward Declaration für State
+	class State;
 
 	class FiniteStateMachine
 	{
@@ -40,7 +21,6 @@ namespace TheProject
 		 * \param gameTime ???? Besser wäre GameTime Klasse mit mehreren Informationen (elapsed, etc.)
 		 */
 		void update(float gameTime);
-
 
 		/**
 		 * \brief Draws currentState of this FiniteStateMachine

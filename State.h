@@ -1,15 +1,20 @@
 #pragma once
 #include "Entity.h"
+#include "Enums.h"
 #include <vector>
-#include "FiniteStateMachine.h"
 
 namespace TheProject
 {
+
+	/**
+	 * \brief Könnte abstrakt sein
+	 */
 	class State
 	{
 	public:
 		State();
-		State(std::vector<Entity*>* entities, std::vector<EState>* next);
+		State(std::string);
+		State(std::string name, std::vector<Entity*>* entities, std::vector<EState>* next);
 		~State();
 
 
@@ -35,6 +40,11 @@ namespace TheProject
 		 */
 		void onExit();
 
+		/**
+		 * \brief Returns Name of this State
+		 * \return Name of this State
+		 */
+		std::string getName();
 
 		/**
 		 * \brief Returns std::vector with all Entities of this State
@@ -51,14 +61,20 @@ namespace TheProject
 
 	private:
 
+		
 		/**
-		 * \brief Entities that inhabit this State.
+		 * \brief Name of this State
+		 */
+		std::string m_name;
+
+		/**
+		 * \brief Entities that inhabit this State
 		 */
 		std::vector<Entity*>* m_entities;
 
 
 		/**
-		 * \brief States that can be reached from this State.
+		 * \brief States that can be reached from this State
 		 */
 		std::vector<EState>* m_next;
 	};

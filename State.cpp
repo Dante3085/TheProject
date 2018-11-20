@@ -1,18 +1,26 @@
 #include "State.h"
 #include "DrawableEntity.h"
 #include <iostream>
+#include <string>
 
 namespace TheProject
 {
 	State::State()
-		: m_entities(new std::vector<Entity*>{}),
-		m_next(new std::vector<EState>{})
+		: m_entities(new std::vector<Entity*>{}), m_name{ "UNNAMED" }, m_next(new std::vector<EState>{})
 	{
+		m_next->push_back(mainMenu);
+		m_next->push_back(inventory);
 	}
 
+	State::State(std::string name)
+		: m_entities(new std::vector<Entity*>{}), m_name{ name }, m_next(new std::vector<EState>{})
+	{
+		m_next->push_back(mainMenu);
+		m_next->push_back(inventory);
+	}
 
-	State::State(std::vector<Entity*>* entities, std::vector<EState>* next)
-		: m_entities(entities), m_next{ next }
+	State::State(std::string name, std::vector<Entity*>* entities, std::vector<EState>* next)
+		: m_name{name}, m_entities(entities), m_next{ next }
 	{
 	}
 
@@ -41,12 +49,17 @@ namespace TheProject
 
 	void State::onEnter()
 	{
-		std::cout << "onEnter()" << std::endl;
+		std::cout << m_name << ": onEnter()" << std::endl;
 	}
 
 	void State::onExit()
 	{
-		std::cout << "OnExit()" << std::endl;
+		std::cout << m_name << ": onExit()" << std::endl;
+	}
+
+	std::string State::getName()
+	{
+		return m_name;
 	}
 
 	std::vector<Entity*>* State::getEntities()
