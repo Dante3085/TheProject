@@ -26,6 +26,15 @@ namespace TheProject
 
 	State::~State()
 	{
+		// Delete all Entities of this State
+		for (int i = 0; i < m_entities->size(); i++)
+			delete m_entities->at(i);
+
+		// Delete Entity container of this State
+		delete m_entities;
+
+		// Delete next container of this State
+		delete m_next;
 	}
 
 	void State::update(float gameTime)
@@ -33,7 +42,6 @@ namespace TheProject
 		// Habe es nicht hinbekommen einen erweiterten for-loop zum laufen zu bringen
 		for (int i = 0; i < m_entities->size(); i++)
 			m_entities->at(i)->update(gameTime);
-
 	}
 
 	void State::draw()

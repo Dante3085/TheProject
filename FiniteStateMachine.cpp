@@ -8,7 +8,7 @@ namespace TheProject
 {
 
 	FiniteStateMachine::FiniteStateMachine()
-		: m_states{ new std::map<EState, State*> }, m_startState(none), m_endState(none)
+		: m_states{ new std::map<EState, State*> }, m_startState{ none }, m_endState{ none }, m_currentState(none)
 	{
 		m_states->insert(std::pair<EState, State*>(none, new State{"none"}));
 		m_states->insert(std::pair<EState, State*>(mainMenu, new State{"mainMenu"}));
@@ -19,20 +19,38 @@ namespace TheProject
 	FiniteStateMachine::FiniteStateMachine(std::map<EState, State*>* states, EState startState, EState endState)
 		: m_states{ states }, m_startState{ startState }, m_endState{ endState }
 	{
+		m_currentState = m_startState;
 	}
 
 	FiniteStateMachine::~FiniteStateMachine()
 	{
+		// Delete all States inside FiniteStateMachine
+		std::map<EState, State*>::iterator it;
+		while(it != m_states->end())
+		{
+			delete it->second;
+			++it;
+		}
+
+		// Delete State container of this FiniteStateMachine
+		delete m_states;
 	}
 
 	void FiniteStateMachine::update(float gameTime)
 	{
-		m_states->at(m_currentState)->update(gameTime);
+		// Make sure that currentState exists (Alternative: Check if m_states is empty)
+		/*State* temp = m_states->at(m_currentState);
+		if (temp != nullptr)
+			temp->update(gameTime);*/
+
+		if (!m_states->empty())
+			m_states->at(m_currentState)->update(gameTime);
 	}
 
 	void FiniteStateMachine::draw()
 	{
-		m_states->at(m_currentState)->draw();
+		if (!m_states->empty())
+			m_states->at(m_currentState)->draw();
 	}
 
 	bool FiniteStateMachine::change(EState state)

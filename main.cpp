@@ -4,6 +4,8 @@
 #include "InputManager.h"
 #include "Utils.h"
 #include "FiniteStateMachine.h"
+#include <map>
+#include "State.h"
 
 using namespace sf;
 using namespace TheProject;
@@ -11,7 +13,9 @@ using namespace TheProject;
 int main()
 {
 	InputManager manager{};
-	FiniteStateMachine fsm{};
+	std::map<EState, State*>* states = new std::map<EState, State*>{ {mainMenu, new State{"MainMenu"}}, 
+		{inventory, new State{"Inventory"}} };
+	FiniteStateMachine fsm{ states, mainMenu, inventory };
 
 	while(true)
 	{
@@ -23,7 +27,7 @@ int main()
 		if (manager.OnKeyDown(Keyboard::Key::Return))
 			fsm.change(mainMenu);
 
-		fsm.update(3.14f);
+		// fsm.update(3.14f);
 		fsm.draw();
 
 		manager.UpdatePreviousStates();
