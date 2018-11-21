@@ -36,7 +36,7 @@ namespace TheProject
 		delete m_states;
 	}
 
-	void FiniteStateMachine::update(float gameTime)
+	void FiniteStateMachine::update(float gameTime) const
 	{
 		// Make sure that currentState exists (Alternative: Check if m_states is empty)
 		/*State* temp = m_states->at(m_currentState);
@@ -47,7 +47,7 @@ namespace TheProject
 			m_states->at(m_currentState)->update(gameTime);
 	}
 
-	void FiniteStateMachine::draw()
+	void FiniteStateMachine::draw() const
 	{
 		if (!m_states->empty())
 			m_states->at(m_currentState)->draw();

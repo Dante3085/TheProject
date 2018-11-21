@@ -20,7 +20,7 @@ namespace TheProject
 		void UpdatePreviousStates();
 
 		bool OnKeyDown(Keyboard::Key key);
-		bool OnDoubleKeyDown(Keyboard::Key key);
+		// bool OnDoubleKeyDown(Keyboard::Key key);
 
 		bool IsKeyDown(Keyboard::Key key);
 

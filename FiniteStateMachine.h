@@ -20,12 +20,12 @@ namespace TheProject
 		 * \brief Updates the currentState of this FiniteStateMachine
 		 * \param gameTime ???? Besser wäre GameTime Klasse mit mehreren Informationen (elapsed, etc.)
 		 */
-		void update(float gameTime);
+		void update(float gameTime) const;
 
 		/**
 		 * \brief Draws currentState of this FiniteStateMachine
 		 */
-		void draw();
+		void draw() const;
 
 
 		/**
@@ -52,27 +52,27 @@ namespace TheProject
 		 * \brief Returns std::map with all States of this FiniteStateMachine
 		 * \return std::map with all States of this FiniteStateMachine
 		 */
-		std::map<EState, State*>* getStates();
+		std::map<EState, State*>* getStates() const;
 
 
 		/**
 		 * \brief Returns EState currentState of this FiniteStateMachine
 		 * \return EState currentState of this FiniteStateMachine
 		 */
-		EState getCurrentState();
+		EState getCurrentState() const;
 
 		/**
 		 * \brief Returns EState startState of this FiniteStateMachine
 		 * \return EState startState of this FiniteStateMachine
 		 */
-		EState getStartState();
+		EState getStartState() const;
 
 
 		/**
 		 * \brief Returns EState endState of this FiniteStateMachine
 		 * \return EState endState of this FiniteStateMachine
 		 */
-		EState getEndState();
+		EState getEndState() const;
 
 	private:
 
