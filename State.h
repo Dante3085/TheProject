@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "Enums.h"
 #include <vector>
+#include <SFML/Graphics/RenderTarget.hpp>
 
 namespace TheProject
 {
@@ -28,7 +29,7 @@ namespace TheProject
 		/**
 		 * \brief Draws all DrawableEntities of this State
 		 */
-		virtual void draw();
+		virtual void draw(sf::RenderTarget& rt);
 
 		/**
 		 * \brief Behaviour when FiniteStateMachine changes to this State

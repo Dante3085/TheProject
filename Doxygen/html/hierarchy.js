@@ -1,9 +1,11 @@
 var hierarchy =
 [
-    [ "Entity", "class_entity.html", [
-      [ "DrawableEntity", "class_drawable_entity.html", null ]
+    [ "TheProject::Entity", "class_the_project_1_1_entity.html", [
+      [ "TheProject::DrawableEntity", "class_the_project_1_1_drawable_entity.html", [
+        [ "TheProject::AnimatedSprite", "class_the_project_1_1_animated_sprite.html", null ]
+      ] ]
     ] ],
-    [ "FiniteStateMachine", "class_finite_state_machine.html", null ],
-    [ "InputManager", "class_input_manager.html", null ],
-    [ "State", "class_state.html", null ]
+    [ "TheProject::FiniteStateMachine", "class_the_project_1_1_finite_state_machine.html", null ],
+    [ "TheProject::InputManager", "class_the_project_1_1_input_manager.html", null ],
+    [ "TheProject::State", "class_the_project_1_1_state.html", null ]
 ];

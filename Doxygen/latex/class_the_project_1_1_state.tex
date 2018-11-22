@@ -1,0 +1,154 @@
+\hypertarget{class_the_project_1_1_state}{}\section{The\+Project\+:\+:State Class Reference}
+\label{class_the_project_1_1_state}\index{The\+Project\+::\+State@{The\+Project\+::\+State}}
+
+
+Könnte abstrakt sein.  
+
+
+
+
+{\ttfamily \#include $<$State.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_the_project_1_1_state_af9479bc105826f6e91f91cf3dfb96a49}{State}} ()
+\item 
+\mbox{\hyperlink{class_the_project_1_1_state_a5c0276c7db84bedbf2fcaf8ca92ad229}{State}} (const std\+::string \&name)
+\item 
+\mbox{\hyperlink{class_the_project_1_1_state_ac509e167bff9c03dec9b2aa769bcb51c}{State}} (const std\+::string \&name, std\+::vector$<$ \mbox{\hyperlink{class_the_project_1_1_entity}{Entity}} $\ast$$>$ $\ast$entities, std\+::vector$<$ \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} $>$ $\ast$next)
+\item 
+\mbox{\hyperlink{class_the_project_1_1_state_a1174709fdf60b908abb9e62403e48a6e}{$\sim$\+State}} ()
+\item 
+virtual void \mbox{\hyperlink{class_the_project_1_1_state_a2aec2c6087a84386454eb6a86e57c742}{update}} (float game\+Time)
+\begin{DoxyCompactList}\small\item\em Updates all Entities of this \mbox{\hyperlink{class_the_project_1_1_state}{State}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_the_project_1_1_state_a4b1b58025f23ece96e1ed0edef596cb1}{draw}} ()
+\begin{DoxyCompactList}\small\item\em Draws all Drawable\+Entities of this \mbox{\hyperlink{class_the_project_1_1_state}{State}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_the_project_1_1_state_aacbc5ae49f1e2c09e25e9dbf1c3f4e08}{on\+Enter}} ()
+\begin{DoxyCompactList}\small\item\em Behaviour when \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}} changes to this \mbox{\hyperlink{class_the_project_1_1_state}{State}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_the_project_1_1_state_aeeb71f1fcd02d57b6d508e094e820f8c}{on\+Exit}} ()
+\begin{DoxyCompactList}\small\item\em Behaviour when \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}} changes from this \mbox{\hyperlink{class_the_project_1_1_state}{State}} to a different \mbox{\hyperlink{class_the_project_1_1_state}{State}}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_the_project_1_1_state_a1b3a3dbc9afd6eb770b61f4fefaaafc3}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Returns Name of this \mbox{\hyperlink{class_the_project_1_1_state}{State}}. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_the_project_1_1_entity}{Entity}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_the_project_1_1_state_a91b279dc3ab78ff8fd05fbeb3b193eb1}{get\+Entities}} () const
+\begin{DoxyCompactList}\small\item\em Returns std\+::vector with all Entities of this \mbox{\hyperlink{class_the_project_1_1_state}{State}}. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} $>$ $\ast$ \mbox{\hyperlink{class_the_project_1_1_state_a2df712b813654b4dda3a2c2a04480859}{get\+Next}} () const
+\begin{DoxyCompactList}\small\item\em Returns std\+::vector with E\+State \char`\"{}references\char`\"{} of all States that can be reached by this \mbox{\hyperlink{class_the_project_1_1_state}{State}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Könnte abstrakt sein. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_the_project_1_1_state_af9479bc105826f6e91f91cf3dfb96a49}\label{class_the_project_1_1_state_af9479bc105826f6e91f91cf3dfb96a49}} 
+\index{The\+Project\+::\+State@{The\+Project\+::\+State}!State@{State}}
+\index{State@{State}!The\+Project\+::\+State@{The\+Project\+::\+State}}
+\subsubsection{\texorpdfstring{State()}{State()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily The\+Project\+::\+State\+::\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_the_project_1_1_state_a5c0276c7db84bedbf2fcaf8ca92ad229}\label{class_the_project_1_1_state_a5c0276c7db84bedbf2fcaf8ca92ad229}} 
+\index{The\+Project\+::\+State@{The\+Project\+::\+State}!State@{State}}
+\index{State@{State}!The\+Project\+::\+State@{The\+Project\+::\+State}}
+\subsubsection{\texorpdfstring{State()}{State()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily The\+Project\+::\+State\+::\+State (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_the_project_1_1_state_ac509e167bff9c03dec9b2aa769bcb51c}\label{class_the_project_1_1_state_ac509e167bff9c03dec9b2aa769bcb51c}} 
+\index{The\+Project\+::\+State@{The\+Project\+::\+State}!State@{State}}
+\index{State@{State}!The\+Project\+::\+State@{The\+Project\+::\+State}}
+\subsubsection{\texorpdfstring{State()}{State()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily The\+Project\+::\+State\+::\+State (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_the_project_1_1_entity}{Entity}} $\ast$$>$ $\ast$}]{entities,  }\item[{std\+::vector$<$ \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} $>$ $\ast$}]{next }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_the_project_1_1_state_a1174709fdf60b908abb9e62403e48a6e}\label{class_the_project_1_1_state_a1174709fdf60b908abb9e62403e48a6e}} 
+\index{The\+Project\+::\+State@{The\+Project\+::\+State}!````~State@{$\sim$\+State}}
+\index{````~State@{$\sim$\+State}!The\+Project\+::\+State@{The\+Project\+::\+State}}
+\subsubsection{\texorpdfstring{$\sim$\+State()}{~State()}}
+{\footnotesize\ttfamily The\+Project\+::\+State\+::$\sim$\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_the_project_1_1_state_a4b1b58025f23ece96e1ed0edef596cb1}\label{class_the_project_1_1_state_a4b1b58025f23ece96e1ed0edef596cb1}} 
+\index{The\+Project\+::\+State@{The\+Project\+::\+State}!draw@{draw}}
+\index{draw@{draw}!The\+Project\+::\+State@{The\+Project\+::\+State}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void The\+Project\+::\+State\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draws all Drawable\+Entities of this \mbox{\hyperlink{class_the_project_1_1_state}{State}}. 
+
+\mbox{\Hypertarget{class_the_project_1_1_state_a91b279dc3ab78ff8fd05fbeb3b193eb1}\label{class_the_project_1_1_state_a91b279dc3ab78ff8fd05fbeb3b193eb1}} 
+\index{The\+Project\+::\+State@{The\+Project\+::\+State}!get\+Entities@{get\+Entities}}
+\index{get\+Entities@{get\+Entities}!The\+Project\+::\+State@{The\+Project\+::\+State}}
+\subsubsection{\texorpdfstring{get\+Entities()}{getEntities()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_the_project_1_1_entity}{Entity}} $\ast$ $>$ $\ast$ The\+Project\+::\+State\+::get\+Entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns std\+::vector with all Entities of this \mbox{\hyperlink{class_the_project_1_1_state}{State}}. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector wit all Entities of this \mbox{\hyperlink{class_the_project_1_1_state}{State}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_the_project_1_1_state_a1b3a3dbc9afd6eb770b61f4fefaaafc3}\label{class_the_project_1_1_state_a1b3a3dbc9afd6eb770b61f4fefaaafc3}} 
+\index{The\+Project\+::\+State@{The\+Project\+::\+State}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!The\+Project\+::\+State@{The\+Project\+::\+State}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+{\footnotesize\ttfamily std\+::string The\+Project\+::\+State\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns Name of this \mbox{\hyperlink{class_the_project_1_1_state}{State}}. 
+
+\begin{DoxyReturn}{Returns}
+Name of this \mbox{\hyperlink{class_the_project_1_1_state}{State}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_the_project_1_1_state_a2df712b813654b4dda3a2c2a04480859}\label{class_the_project_1_1_state_a2df712b813654b4dda3a2c2a04480859}} 
+\index{The\+Project\+::\+State@{The\+Project\+::\+State}!get\+Next@{get\+Next}}
+\index{get\+Next@{get\+Next}!The\+Project\+::\+State@{The\+Project\+::\+State}}
+\subsubsection{\texorpdfstring{get\+Next()}{getNext()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} $>$ $\ast$ The\+Project\+::\+State\+::get\+Next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns std\+::vector with E\+State \char`\"{}references\char`\"{} of all States that can be reached by this \mbox{\hyperlink{class_the_project_1_1_state}{State}}. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector with E\+State \char`\"{}references\char`\"{} of all States that can be reached by this \mbox{\hyperlink{class_the_project_1_1_state}{State}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_the_project_1_1_state_aacbc5ae49f1e2c09e25e9dbf1c3f4e08}\label{class_the_project_1_1_state_aacbc5ae49f1e2c09e25e9dbf1c3f4e08}} 
+\index{The\+Project\+::\+State@{The\+Project\+::\+State}!on\+Enter@{on\+Enter}}
+\index{on\+Enter@{on\+Enter}!The\+Project\+::\+State@{The\+Project\+::\+State}}
+\subsubsection{\texorpdfstring{on\+Enter()}{onEnter()}}
+{\footnotesize\ttfamily void The\+Project\+::\+State\+::on\+Enter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Behaviour when \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}} changes to this \mbox{\hyperlink{class_the_project_1_1_state}{State}}. 
+
+\mbox{\Hypertarget{class_the_project_1_1_state_aeeb71f1fcd02d57b6d508e094e820f8c}\label{class_the_project_1_1_state_aeeb71f1fcd02d57b6d508e094e820f8c}} 
+\index{The\+Project\+::\+State@{The\+Project\+::\+State}!on\+Exit@{on\+Exit}}
+\index{on\+Exit@{on\+Exit}!The\+Project\+::\+State@{The\+Project\+::\+State}}
+\subsubsection{\texorpdfstring{on\+Exit()}{onExit()}}
+{\footnotesize\ttfamily void The\+Project\+::\+State\+::on\+Exit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Behaviour when \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}} changes from this \mbox{\hyperlink{class_the_project_1_1_state}{State}} to a different \mbox{\hyperlink{class_the_project_1_1_state}{State}}. 
+
+\mbox{\Hypertarget{class_the_project_1_1_state_a2aec2c6087a84386454eb6a86e57c742}\label{class_the_project_1_1_state_a2aec2c6087a84386454eb6a86e57c742}} 
+\index{The\+Project\+::\+State@{The\+Project\+::\+State}!update@{update}}
+\index{update@{update}!The\+Project\+::\+State@{The\+Project\+::\+State}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void The\+Project\+::\+State\+::update (\begin{DoxyParamCaption}\item[{float}]{game\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates all Entities of this \mbox{\hyperlink{class_the_project_1_1_state}{State}}. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/2\+\_\+\+I\+T\+\_\+\+Informatik/2\+\_\+\+Programmierung/1\+\_\+\+M\+S\+V\+S2017\+Entwicklung/1\+\_\+\+Projekte/\+The\+Project/\+The\+Project/\+The\+Project/\mbox{\hyperlink{_state_8h}{State.\+h}}\item 
+C\+:/2\+\_\+\+I\+T\+\_\+\+Informatik/2\+\_\+\+Programmierung/1\+\_\+\+M\+S\+V\+S2017\+Entwicklung/1\+\_\+\+Projekte/\+The\+Project/\+The\+Project/\+The\+Project/\mbox{\hyperlink{_state_8cpp}{State.\+cpp}}\end{DoxyCompactItemize}

@@ -5,6 +5,9 @@
 {\ttfamily \#include $<$S\+F\+M\+L/\+Graphics.\+hpp$>$}\newline
 {\ttfamily \#include \char`\"{}Input\+Manager.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Utils.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Finite\+State\+Machine.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include \char`\"{}State.\+h\char`\"{}}\newline
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -19,3 +22,5 @@ int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
 \subsubsection{\texorpdfstring{main()}{main()}}
 {\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000002}{Bug}}]Wenn in obiger Schleife Return gedrückt wurde, wird das Programm nach Drücken von Escape in der Schleife ohne anzuhalten beendet. \end{DoxyRefDesc}

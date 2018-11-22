@@ -1,4 +1,4 @@
 var namespaces_dup =
 [
-    [ "Utils", "namespace_utils.html", null ]
+    [ "TheProject", "namespace_the_project.html", "namespace_the_project" ]
 ];

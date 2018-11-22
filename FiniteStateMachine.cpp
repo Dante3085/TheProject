@@ -61,10 +61,10 @@ namespace TheProject
 			m_states->at(m_currentState)->update(gameTime);
 	}
 
-	void FiniteStateMachine::draw() const
+	void FiniteStateMachine::draw(sf::RenderTarget& rt) const
 	{
 		if (!m_states->empty())
-			m_states->at(m_currentState)->draw();
+			m_states->at(m_currentState)->draw(rt);
 	}
 
 	bool FiniteStateMachine::change(EState state)

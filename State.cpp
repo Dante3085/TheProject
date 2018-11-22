@@ -44,14 +44,14 @@ namespace TheProject
 			m_entities->at(i)->update(gameTime);
 	}
 
-	void State::draw()
+	void State::draw(sf::RenderTarget& rt)
 	{
 		DrawableEntity* drawEnt;
 		for (int i = 0; i < m_entities->size(); i++)
 		{
 			// Wie checke ich hier, ob die Entity an der Stelle i eine DrawableEntitiy ist ?
 			if ((drawEnt = dynamic_cast<DrawableEntity*>(m_entities->at(i))))
-				drawEnt->draw();
+				drawEnt->draw(rt);
 		}
 	}
 

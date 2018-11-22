@@ -1,0 +1,57 @@
+\hypertarget{namespace_the_project}{}\section{The\+Project Namespace Reference}
+\label{namespace_the_project}\index{The\+Project@{The\+Project}}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespace_the_project_1_1_utils}{Utils}}
+\begin{DoxyCompactList}\small\item\em Contains static functions that serve general purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_the_project_1_1_animated_sprite}{Animated\+Sprite}}
+\item 
+class \mbox{\hyperlink{class_the_project_1_1_drawable_entity}{Drawable\+Entity}}
+\item 
+class \mbox{\hyperlink{class_the_project_1_1_entity}{Entity}}
+\item 
+class \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}
+\item 
+class \mbox{\hyperlink{class_the_project_1_1_input_manager}{Input\+Manager}}
+\begin{DoxyCompactList}\small\item\em Sollte eher Namespace sein. Klassen nur mit statischen Funktionen sind nicht sinnvoll. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_the_project_1_1_state}{State}}
+\begin{DoxyCompactList}\small\item\em Könnte abstrakt sein. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} \{ \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9a5161d613c1d218eb6c84529604ec5469}{none}}, 
+\mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9a27171d1512649c717ea4d3c5abb9ae4c}{inventory}}, 
+\mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9a51951b246d8ef892ea94e5b5e40bb408}{main\+Menu}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum used to quickly access State objects inside std\+::map states of this Finite\+State\+Machine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}\label{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}} 
+\index{The\+Project@{The\+Project}!E\+State@{E\+State}}
+\index{E\+State@{E\+State}!The\+Project@{The\+Project}}
+\subsubsection{\texorpdfstring{E\+State}{EState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{The\+Project\+::\+E\+State}}}
+
+
+
+Enum used to quickly access \mbox{\hyperlink{class_the_project_1_1_state}{State}} objects inside std\+::map states of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{none@{none}!The\+Project@{The\+Project}}\index{The\+Project@{The\+Project}!none@{none}}}\mbox{\Hypertarget{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9a5161d613c1d218eb6c84529604ec5469}\label{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9a5161d613c1d218eb6c84529604ec5469}} 
+none&Represents the absence of a \mbox{\hyperlink{class_the_project_1_1_state}{State}}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{inventory@{inventory}!The\+Project@{The\+Project}}\index{The\+Project@{The\+Project}!inventory@{inventory}}}\mbox{\Hypertarget{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9a27171d1512649c717ea4d3c5abb9ae4c}\label{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9a27171d1512649c717ea4d3c5abb9ae4c}} 
+inventory&Represents the Inventory \mbox{\hyperlink{class_the_project_1_1_state}{State}}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{main\+Menu@{main\+Menu}!The\+Project@{The\+Project}}\index{The\+Project@{The\+Project}!main\+Menu@{main\+Menu}}}\mbox{\Hypertarget{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9a51951b246d8ef892ea94e5b5e40bb408}\label{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9a51951b246d8ef892ea94e5b5e40bb408}} 
+main\+Menu&Represents Main\+Menu \mbox{\hyperlink{class_the_project_1_1_state}{State}}. \\
+\hline
+
+\end{DoxyEnumFields}

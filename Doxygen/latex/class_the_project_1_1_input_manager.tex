@@ -1,0 +1,103 @@
+\hypertarget{class_the_project_1_1_input_manager}{}\section{The\+Project\+:\+:Input\+Manager Class Reference}
+\label{class_the_project_1_1_input_manager}\index{The\+Project\+::\+Input\+Manager@{The\+Project\+::\+Input\+Manager}}
+
+
+Sollte eher Namespace sein. Klassen nur mit statischen Funktionen sind nicht sinnvoll.  
+
+
+
+
+{\ttfamily \#include $<$Input\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_the_project_1_1_input_manager_a4bee47367bbc3f06230a564483577981}{Input\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_the_project_1_1_input_manager_a706dff36758aa33b2f9057849ee74dca}{$\sim$\+Input\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_the_project_1_1_input_manager_a766d64cfa0d1ad4e78b42c03a32d02eb}{Update\+Current\+States}} ()
+\begin{DoxyCompactList}\small\item\em Updates current Key States. Call before you\textquotesingle{}r Key-\/\+Operations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_the_project_1_1_input_manager_aefc6ce350e1ab78cc3aaef145c55a65a}{Update\+Previous\+States}} ()
+\begin{DoxyCompactList}\small\item\em Updates previous Key States. Call after you\textquotesingle{}r Key-\/\+Operations. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_the_project_1_1_input_manager_aba7f889c5258aa96a7314371755a03ac}{On\+Key\+Down}} (Keyboard\+::\+Key key)
+\begin{DoxyCompactList}\small\item\em Gets whether or not key was previously not pressed and is now pressed (=Key\+Press that ignores holding) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_the_project_1_1_input_manager_a01544ca4b1cf91f0eff474fb0270acbe}{Is\+Key\+Down}} (Keyboard\+::\+Key key)
+\begin{DoxyCompactList}\small\item\em Gets whether or not key was previously pressed and is now pressed as well (=Key\+Press with holding) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Sollte eher Namespace sein. Klassen nur mit statischen Funktionen sind nicht sinnvoll. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_the_project_1_1_input_manager_a4bee47367bbc3f06230a564483577981}\label{class_the_project_1_1_input_manager_a4bee47367bbc3f06230a564483577981}} 
+\index{The\+Project\+::\+Input\+Manager@{The\+Project\+::\+Input\+Manager}!Input\+Manager@{Input\+Manager}}
+\index{Input\+Manager@{Input\+Manager}!The\+Project\+::\+Input\+Manager@{The\+Project\+::\+Input\+Manager}}
+\subsubsection{\texorpdfstring{Input\+Manager()}{InputManager()}}
+{\footnotesize\ttfamily The\+Project\+::\+Input\+Manager\+::\+Input\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+\mbox{\Hypertarget{class_the_project_1_1_input_manager_a706dff36758aa33b2f9057849ee74dca}\label{class_the_project_1_1_input_manager_a706dff36758aa33b2f9057849ee74dca}} 
+\index{The\+Project\+::\+Input\+Manager@{The\+Project\+::\+Input\+Manager}!````~Input\+Manager@{$\sim$\+Input\+Manager}}
+\index{````~Input\+Manager@{$\sim$\+Input\+Manager}!The\+Project\+::\+Input\+Manager@{The\+Project\+::\+Input\+Manager}}
+\subsubsection{\texorpdfstring{$\sim$\+Input\+Manager()}{~InputManager()}}
+{\footnotesize\ttfamily The\+Project\+::\+Input\+Manager\+::$\sim$\+Input\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_the_project_1_1_input_manager_a01544ca4b1cf91f0eff474fb0270acbe}\label{class_the_project_1_1_input_manager_a01544ca4b1cf91f0eff474fb0270acbe}} 
+\index{The\+Project\+::\+Input\+Manager@{The\+Project\+::\+Input\+Manager}!Is\+Key\+Down@{Is\+Key\+Down}}
+\index{Is\+Key\+Down@{Is\+Key\+Down}!The\+Project\+::\+Input\+Manager@{The\+Project\+::\+Input\+Manager}}
+\subsubsection{\texorpdfstring{Is\+Key\+Down()}{IsKeyDown()}}
+{\footnotesize\ttfamily bool The\+Project\+::\+Input\+Manager\+::\+Is\+Key\+Down (\begin{DoxyParamCaption}\item[{Keyboard\+::\+Key}]{key }\end{DoxyParamCaption})}
+
+
+
+Gets whether or not key was previously pressed and is now pressed as well (=Key\+Press with holding) 
+
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000001}{Bug}}]Triggers after a short delay ($\sim$500ms) when placed inside window loop. \end{DoxyRefDesc}
+\mbox{\Hypertarget{class_the_project_1_1_input_manager_aba7f889c5258aa96a7314371755a03ac}\label{class_the_project_1_1_input_manager_aba7f889c5258aa96a7314371755a03ac}} 
+\index{The\+Project\+::\+Input\+Manager@{The\+Project\+::\+Input\+Manager}!On\+Key\+Down@{On\+Key\+Down}}
+\index{On\+Key\+Down@{On\+Key\+Down}!The\+Project\+::\+Input\+Manager@{The\+Project\+::\+Input\+Manager}}
+\subsubsection{\texorpdfstring{On\+Key\+Down()}{OnKeyDown()}}
+{\footnotesize\ttfamily bool The\+Project\+::\+Input\+Manager\+::\+On\+Key\+Down (\begin{DoxyParamCaption}\item[{Keyboard\+::\+Key}]{key }\end{DoxyParamCaption})}
+
+
+
+Gets whether or not key was previously not pressed and is now pressed (=Key\+Press that ignores holding) 
+
+\mbox{\Hypertarget{class_the_project_1_1_input_manager_a766d64cfa0d1ad4e78b42c03a32d02eb}\label{class_the_project_1_1_input_manager_a766d64cfa0d1ad4e78b42c03a32d02eb}} 
+\index{The\+Project\+::\+Input\+Manager@{The\+Project\+::\+Input\+Manager}!Update\+Current\+States@{Update\+Current\+States}}
+\index{Update\+Current\+States@{Update\+Current\+States}!The\+Project\+::\+Input\+Manager@{The\+Project\+::\+Input\+Manager}}
+\subsubsection{\texorpdfstring{Update\+Current\+States()}{UpdateCurrentStates()}}
+{\footnotesize\ttfamily void The\+Project\+::\+Input\+Manager\+::\+Update\+Current\+States (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates current Key States. Call before you\textquotesingle{}r Key-\/\+Operations. 
+
+\mbox{\Hypertarget{class_the_project_1_1_input_manager_aefc6ce350e1ab78cc3aaef145c55a65a}\label{class_the_project_1_1_input_manager_aefc6ce350e1ab78cc3aaef145c55a65a}} 
+\index{The\+Project\+::\+Input\+Manager@{The\+Project\+::\+Input\+Manager}!Update\+Previous\+States@{Update\+Previous\+States}}
+\index{Update\+Previous\+States@{Update\+Previous\+States}!The\+Project\+::\+Input\+Manager@{The\+Project\+::\+Input\+Manager}}
+\subsubsection{\texorpdfstring{Update\+Previous\+States()}{UpdatePreviousStates()}}
+{\footnotesize\ttfamily void The\+Project\+::\+Input\+Manager\+::\+Update\+Previous\+States (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates previous Key States. Call after you\textquotesingle{}r Key-\/\+Operations. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/2\+\_\+\+I\+T\+\_\+\+Informatik/2\+\_\+\+Programmierung/1\+\_\+\+M\+S\+V\+S2017\+Entwicklung/1\+\_\+\+Projekte/\+The\+Project/\+The\+Project/\+The\+Project/\mbox{\hyperlink{_input_manager_8h}{Input\+Manager.\+h}}\item 
+C\+:/2\+\_\+\+I\+T\+\_\+\+Informatik/2\+\_\+\+Programmierung/1\+\_\+\+M\+S\+V\+S2017\+Entwicklung/1\+\_\+\+Projekte/\+The\+Project/\+The\+Project/\+The\+Project/\mbox{\hyperlink{_input_manager_8cpp}{Input\+Manager.\+cpp}}\end{DoxyCompactItemize}

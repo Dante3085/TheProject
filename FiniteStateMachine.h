@@ -2,6 +2,7 @@
 
 #include "Enums.h"
 #include <map>
+#include <SFML/Graphics/RenderTarget.hpp>
 
 namespace TheProject
 {
@@ -25,7 +26,7 @@ namespace TheProject
 		/**
 		 * \brief Draws currentState of this FiniteStateMachine
 		 */
-		void draw() const;
+		void draw(sf::RenderTarget& rt) const;
 
 
 		/**

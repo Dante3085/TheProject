@@ -1,0 +1,178 @@
+\hypertarget{class_the_project_1_1_finite_state_machine}{}\section{The\+Project\+:\+:Finite\+State\+Machine Class Reference}
+\label{class_the_project_1_1_finite_state_machine}\index{The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}}
+
+
+{\ttfamily \#include $<$Finite\+State\+Machine.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_the_project_1_1_finite_state_machine_a3328861511cf7de30f20ca54678cddbb}{Finite\+State\+Machine}} ()
+\item 
+\mbox{\hyperlink{class_the_project_1_1_finite_state_machine_ab719e5897533b98c1fb0ed629521de9f}{Finite\+State\+Machine}} (std\+::map$<$ \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}}, \mbox{\hyperlink{class_the_project_1_1_state}{State}} $\ast$$>$ $\ast$states, \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} start\+State, \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} end\+State)
+\item 
+\mbox{\hyperlink{class_the_project_1_1_finite_state_machine_a5cfba82254f69404c6941e03b7d8192a}{$\sim$\+Finite\+State\+Machine}} ()
+\item 
+void \mbox{\hyperlink{class_the_project_1_1_finite_state_machine_adb1b07e46a5eeacdf9edb311999b0a62}{update}} (float game\+Time) const
+\begin{DoxyCompactList}\small\item\em Updates the current\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_the_project_1_1_finite_state_machine_aeafb8ba2f752405fb1fc26c25ecbfecb}{draw}} () const
+\begin{DoxyCompactList}\small\item\em Draws current\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_the_project_1_1_finite_state_machine_a3c9f3d9e314c44e4845938204d8a55cd}{change}} (\mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} state)
+\begin{DoxyCompactList}\small\item\em If possible, changes current\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}} to state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_the_project_1_1_finite_state_machine_adb1a6c6a6730d2170915a3f3bd696350}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Resets this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}(i.\+e. Restores initial \char`\"{}\+State\char`\"{}(colloquial) of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_the_project_1_1_finite_state_machine_aafdc1837a9279f3509f15eff6a16828f}{terminate}} ()
+\begin{DoxyCompactList}\small\item\em Terminates this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}(i.\+e. ????) \end{DoxyCompactList}\item 
+std\+::map$<$ \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}}, \mbox{\hyperlink{class_the_project_1_1_state}{State}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_the_project_1_1_finite_state_machine_a94d221a98b4107dafe325a08642304b6}{get\+States}} () const
+\begin{DoxyCompactList}\small\item\em Returns std\+::map with all States of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} \mbox{\hyperlink{class_the_project_1_1_finite_state_machine_a6d6327ea03cdd29b1c03a57de907db18}{get\+Current\+State}} () const
+\begin{DoxyCompactList}\small\item\em Returns E\+State current\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} \mbox{\hyperlink{class_the_project_1_1_finite_state_machine_aed525239e7dd0b3dc26a07e3766d8c11}{get\+Start\+State}} () const
+\begin{DoxyCompactList}\small\item\em Returns E\+State start\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} \mbox{\hyperlink{class_the_project_1_1_finite_state_machine_ad67f02240858c7b21e499c3ed84da376}{get\+End\+State}} () const
+\begin{DoxyCompactList}\small\item\em Returns E\+State end\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_the_project_1_1_finite_state_machine_a3328861511cf7de30f20ca54678cddbb}\label{class_the_project_1_1_finite_state_machine_a3328861511cf7de30f20ca54678cddbb}} 
+\index{The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}!Finite\+State\+Machine@{Finite\+State\+Machine}}
+\index{Finite\+State\+Machine@{Finite\+State\+Machine}!The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}}
+\subsubsection{\texorpdfstring{Finite\+State\+Machine()}{FiniteStateMachine()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily The\+Project\+::\+Finite\+State\+Machine\+::\+Finite\+State\+Machine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_the_project_1_1_finite_state_machine_ab719e5897533b98c1fb0ed629521de9f}\label{class_the_project_1_1_finite_state_machine_ab719e5897533b98c1fb0ed629521de9f}} 
+\index{The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}!Finite\+State\+Machine@{Finite\+State\+Machine}}
+\index{Finite\+State\+Machine@{Finite\+State\+Machine}!The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}}
+\subsubsection{\texorpdfstring{Finite\+State\+Machine()}{FiniteStateMachine()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily The\+Project\+::\+Finite\+State\+Machine\+::\+Finite\+State\+Machine (\begin{DoxyParamCaption}\item[{std\+::map$<$ \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}}, \mbox{\hyperlink{class_the_project_1_1_state}{State}} $\ast$$>$ $\ast$}]{states,  }\item[{\mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}}}]{start\+State,  }\item[{\mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}}}]{end\+State }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_the_project_1_1_finite_state_machine_a5cfba82254f69404c6941e03b7d8192a}\label{class_the_project_1_1_finite_state_machine_a5cfba82254f69404c6941e03b7d8192a}} 
+\index{The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}!````~Finite\+State\+Machine@{$\sim$\+Finite\+State\+Machine}}
+\index{````~Finite\+State\+Machine@{$\sim$\+Finite\+State\+Machine}!The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}}
+\subsubsection{\texorpdfstring{$\sim$\+Finite\+State\+Machine()}{~FiniteStateMachine()}}
+{\footnotesize\ttfamily The\+Project\+::\+Finite\+State\+Machine\+::$\sim$\+Finite\+State\+Machine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_the_project_1_1_finite_state_machine_a3c9f3d9e314c44e4845938204d8a55cd}\label{class_the_project_1_1_finite_state_machine_a3c9f3d9e314c44e4845938204d8a55cd}} 
+\index{The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}!change@{change}}
+\index{change@{change}!The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}}
+\subsubsection{\texorpdfstring{change()}{change()}}
+{\footnotesize\ttfamily bool The\+Project\+::\+Finite\+State\+Machine\+::change (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}}}]{state }\end{DoxyParamCaption})}
+
+
+
+If possible, changes current\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}} to state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{\hyperlink{class_the_project_1_1_state}{State}} that will be current\+State if \mbox{\hyperlink{class_the_project_1_1_finite_state_machine_a3c9f3d9e314c44e4845938204d8a55cd}{change()}} is successful \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if change to state was successful, else false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_the_project_1_1_finite_state_machine_aeafb8ba2f752405fb1fc26c25ecbfecb}\label{class_the_project_1_1_finite_state_machine_aeafb8ba2f752405fb1fc26c25ecbfecb}} 
+\index{The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}!draw@{draw}}
+\index{draw@{draw}!The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void The\+Project\+::\+Finite\+State\+Machine\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Draws current\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}. 
+
+\mbox{\Hypertarget{class_the_project_1_1_finite_state_machine_a6d6327ea03cdd29b1c03a57de907db18}\label{class_the_project_1_1_finite_state_machine_a6d6327ea03cdd29b1c03a57de907db18}} 
+\index{The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}!get\+Current\+State@{get\+Current\+State}}
+\index{get\+Current\+State@{get\+Current\+State}!The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}}
+\subsubsection{\texorpdfstring{get\+Current\+State()}{getCurrentState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} The\+Project\+::\+Finite\+State\+Machine\+::get\+Current\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns E\+State current\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}. 
+
+\begin{DoxyReturn}{Returns}
+E\+State current\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_the_project_1_1_finite_state_machine_ad67f02240858c7b21e499c3ed84da376}\label{class_the_project_1_1_finite_state_machine_ad67f02240858c7b21e499c3ed84da376}} 
+\index{The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}!get\+End\+State@{get\+End\+State}}
+\index{get\+End\+State@{get\+End\+State}!The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}}
+\subsubsection{\texorpdfstring{get\+End\+State()}{getEndState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} The\+Project\+::\+Finite\+State\+Machine\+::get\+End\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns E\+State end\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}. 
+
+\begin{DoxyReturn}{Returns}
+E\+State end\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_the_project_1_1_finite_state_machine_aed525239e7dd0b3dc26a07e3766d8c11}\label{class_the_project_1_1_finite_state_machine_aed525239e7dd0b3dc26a07e3766d8c11}} 
+\index{The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}!get\+Start\+State@{get\+Start\+State}}
+\index{get\+Start\+State@{get\+Start\+State}!The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}}
+\subsubsection{\texorpdfstring{get\+Start\+State()}{getStartState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}} The\+Project\+::\+Finite\+State\+Machine\+::get\+Start\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns E\+State start\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}. 
+
+\begin{DoxyReturn}{Returns}
+E\+State start\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_the_project_1_1_finite_state_machine_a94d221a98b4107dafe325a08642304b6}\label{class_the_project_1_1_finite_state_machine_a94d221a98b4107dafe325a08642304b6}} 
+\index{The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}!get\+States@{get\+States}}
+\index{get\+States@{get\+States}!The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}}
+\subsubsection{\texorpdfstring{get\+States()}{getStates()}}
+{\footnotesize\ttfamily std\+::map$<$ \mbox{\hyperlink{namespace_the_project_a44ff561b5cef085c7b09b8461a14f7d9}{E\+State}}, \mbox{\hyperlink{class_the_project_1_1_state}{State}} $\ast$ $>$ $\ast$ The\+Project\+::\+Finite\+State\+Machine\+::get\+States (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns std\+::map with all States of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}. 
+
+\begin{DoxyReturn}{Returns}
+std\+::map with all States of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_the_project_1_1_finite_state_machine_adb1a6c6a6730d2170915a3f3bd696350}\label{class_the_project_1_1_finite_state_machine_adb1a6c6a6730d2170915a3f3bd696350}} 
+\index{The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}!reset@{reset}}
+\index{reset@{reset}!The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void The\+Project\+::\+Finite\+State\+Machine\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}(i.\+e. Restores initial \char`\"{}\+State\char`\"{}(colloquial) of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}) 
+
+\mbox{\Hypertarget{class_the_project_1_1_finite_state_machine_aafdc1837a9279f3509f15eff6a16828f}\label{class_the_project_1_1_finite_state_machine_aafdc1837a9279f3509f15eff6a16828f}} 
+\index{The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}!terminate@{terminate}}
+\index{terminate@{terminate}!The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}}
+\subsubsection{\texorpdfstring{terminate()}{terminate()}}
+{\footnotesize\ttfamily void The\+Project\+::\+Finite\+State\+Machine\+::terminate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Terminates this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}(i.\+e. ????) 
+
+\mbox{\Hypertarget{class_the_project_1_1_finite_state_machine_adb1b07e46a5eeacdf9edb311999b0a62}\label{class_the_project_1_1_finite_state_machine_adb1b07e46a5eeacdf9edb311999b0a62}} 
+\index{The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}!update@{update}}
+\index{update@{update}!The\+Project\+::\+Finite\+State\+Machine@{The\+Project\+::\+Finite\+State\+Machine}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void The\+Project\+::\+Finite\+State\+Machine\+::update (\begin{DoxyParamCaption}\item[{float}]{game\+Time }\end{DoxyParamCaption}) const}
+
+
+
+Updates the current\+State of this \mbox{\hyperlink{class_the_project_1_1_finite_state_machine}{Finite\+State\+Machine}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Time} & ???? Besser wäre Game\+Time Klasse mit mehreren Informationen (elapsed, etc.) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/2\+\_\+\+I\+T\+\_\+\+Informatik/2\+\_\+\+Programmierung/1\+\_\+\+M\+S\+V\+S2017\+Entwicklung/1\+\_\+\+Projekte/\+The\+Project/\+The\+Project/\+The\+Project/\mbox{\hyperlink{_finite_state_machine_8h}{Finite\+State\+Machine.\+h}}\item 
+C\+:/2\+\_\+\+I\+T\+\_\+\+Informatik/2\+\_\+\+Programmierung/1\+\_\+\+M\+S\+V\+S2017\+Entwicklung/1\+\_\+\+Projekte/\+The\+Project/\+The\+Project/\+The\+Project/\mbox{\hyperlink{_finite_state_machine_8cpp}{Finite\+State\+Machine.\+cpp}}\end{DoxyCompactItemize}
