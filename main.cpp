@@ -15,7 +15,8 @@ int main()
 	InputManager manager{};
 	std::map<EState, State*>* states = new std::map<EState, State*>{ {mainMenu, new State{"MainMenu"}}, 
 		{inventory, new State{"Inventory"}} };
-	FiniteStateMachine fsm{ states, mainMenu, inventory };
+
+	FiniteStateMachine fsm{ states, none, inventory };
 
 	while(true)
 	{
@@ -27,7 +28,7 @@ int main()
 		if (manager.OnKeyDown(Keyboard::Key::Return))
 			fsm.change(mainMenu);
 
-		// fsm.update(3.14f);
+		fsm.update(3.14f);
 		fsm.draw();
 
 		manager.UpdatePreviousStates();

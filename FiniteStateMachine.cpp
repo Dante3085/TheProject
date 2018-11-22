@@ -10,6 +10,7 @@ namespace TheProject
 	FiniteStateMachine::FiniteStateMachine()
 		: m_states{ new std::map<EState, State*> }, m_startState{ none }, m_endState{ none }, m_currentState(none)
 	{
+		// inserts nur zum testen
 		m_states->insert(std::pair<EState, State*>(none, new State{"none"}));
 		m_states->insert(std::pair<EState, State*>(mainMenu, new State{"mainMenu"}));
 		m_states->insert(std::pair<EState, State*>(inventory, new State{"inventory"}));
@@ -19,17 +20,30 @@ namespace TheProject
 	FiniteStateMachine::FiniteStateMachine(std::map<EState, State*>* states, EState startState, EState endState)
 		: m_states{ states }, m_startState{ startState }, m_endState{ endState }
 	{
+		// none State always exists to represent the absence of any reasonable State
+		m_states->insert(std::pair<EState, State*>(none, new State{ "none" }));
+
+		// Check if startState is known to FiniteStateMachine
+		if (m_states->count(m_startState) == 0)
+			m_startState = none;
+
 		m_currentState = m_startState;
 	}
 
+	// TODO: Produces Debug Assertion Failed. Expression: map/set iterators incompatible
 	FiniteStateMachine::~FiniteStateMachine()
 	{
 		// Delete all States inside FiniteStateMachine
 		std::map<EState, State*>::iterator it;
+
+		std::cout << "Test" << std::endl;
+		it = m_states->begin();
 		while(it != m_states->end())
 		{
+			std::cout << "Fist: " << std::endl;
+			std::cout << it->first << std::endl;
 			delete it->second;
-			++it;
+			it++;
 		}
 
 		// Delete State container of this FiniteStateMachine
@@ -92,22 +106,22 @@ namespace TheProject
 	{
 	}
 
-	std::map<EState, State*>* FiniteStateMachine::getStates()
+	std::map<EState, State*>* FiniteStateMachine::getStates() const
 	{
 		return m_states;
 	}
 
-	EState FiniteStateMachine::getCurrentState()
+	EState FiniteStateMachine::getCurrentState() const
 	{
 		return m_currentState;
 	}
 
-	EState FiniteStateMachine::getStartState()
+	EState FiniteStateMachine::getStartState() const
 	{
 		return m_startState;
 	}
 
-	EState FiniteStateMachine::getEndState()
+	EState FiniteStateMachine::getEndState() const
 	{
 		return m_endState;
 	}

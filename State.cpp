@@ -6,20 +6,20 @@
 namespace TheProject
 {
 	State::State()
-		: m_entities(new std::vector<Entity*>{}), m_name{ "UNNAMED" }, m_next(new std::vector<EState>{})
+		: m_name{ "UNNAMED" }, m_entities{ new std::vector<Entity*>{} }, m_next{ new std::vector<EState>{} }
 	{
 		m_next->push_back(mainMenu);
 		m_next->push_back(inventory);
 	}
 
-	State::State(std::string name)
-		: m_entities(new std::vector<Entity*>{}), m_name{ name }, m_next(new std::vector<EState>{})
+	State::State(const std::string& name)
+		: m_name{ name }, m_entities(new std::vector<Entity*>{}), m_next{ new std::vector<EState>{} }
 	{
 		m_next->push_back(mainMenu);
 		m_next->push_back(inventory);
 	}
 
-	State::State(std::string name, std::vector<Entity*>* entities, std::vector<EState>* next)
+	State::State(const std::string& name, std::vector<Entity*>* entities, std::vector<EState>* next)
 		: m_name{name}, m_entities(entities), m_next{ next }
 	{
 	}
@@ -51,7 +51,7 @@ namespace TheProject
 		{
 			// Wie checke ich hier, ob die Entity an der Stelle i eine DrawableEntitiy ist ?
 			if ((drawEnt = dynamic_cast<DrawableEntity*>(m_entities->at(i))))
-				drawEnt->Draw();
+				drawEnt->draw();
 		}
 	}
 
@@ -65,17 +65,17 @@ namespace TheProject
 		std::cout << m_name << ": onExit()" << std::endl;
 	}
 
-	std::string State::getName()
+	std::string State::getName() const
 	{
 		return m_name;
 	}
 
-	std::vector<Entity*>* State::getEntities()
+	std::vector<Entity*>* State::getEntities() const
 	{
 		return m_entities;
 	}
 
-	std::vector<EState>* State::getNext()
+	std::vector<EState>* State::getNext() const
 	{
 		return m_next;
 	}

@@ -1,12 +1,14 @@
 #pragma once
 #include "Entity.h"
+#include <SFML/Graphics/RenderTarget.hpp>
 
 namespace TheProject
 {
-	class DrawableEntity : Entity
+	class DrawableEntity : public Entity
 	{
 	public:
-		virtual void Draw(/* TODO */) = 0;
+		virtual ~DrawableEntity() {}
+		virtual void draw(sf::RenderTarget& rt) const = 0;
 
 	private:
 

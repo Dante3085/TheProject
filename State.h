@@ -13,51 +13,51 @@ namespace TheProject
 	{
 	public:
 		State();
-		State(std::string);
-		State(std::string name, std::vector<Entity*>* entities, std::vector<EState>* next);
+		// TODO: Sollte ich hier immer const refs übergeben ?
+		State(const std::string& name);
+		State(const std::string& name, std::vector<Entity*>* entities, std::vector<EState>* next);
 		~State();
 
 
 		/**
-		 * \brief
-		 * \param gameTime Again, GameTime class with more information would be better (elapsed, etc.)
+		 * \brief Updates all Entities of this State
 		 */
-		void update(float gameTime);
+		virtual void update(float gameTime);
 
 
 		/**
 		 * \brief Draws all DrawableEntities of this State
 		 */
-		void draw(/* TODO */);
+		virtual void draw();
 
 		/**
 		 * \brief Behaviour when FiniteStateMachine changes to this State
 		 */
-		void onEnter();
+		virtual void onEnter();
 
 		/**
 		 * \brief Behaviour when FiniteStateMachine changes from this State to a different State
 		 */
-		void onExit();
+		virtual void onExit();
 
 		/**
 		 * \brief Returns Name of this State
 		 * \return Name of this State
 		 */
-		std::string getName();
+		std::string getName() const;
 
 		/**
 		 * \brief Returns std::vector with all Entities of this State
 		 * \return std::vector wit all Entities of this State
 		 */
-		std::vector<Entity*>* getEntities();
+		std::vector<Entity*>* getEntities() const;
 
 
 		/**
 		 * \brief Returns std::vector with EState "references" of all States that can be reached by this State
 		 * \return std::vector with EState "references" of all States that can be reached by this State
 		 */
-		std::vector<EState>* getNext();
+		std::vector<EState>* getNext() const;
 
 	private:
 
@@ -70,12 +70,14 @@ namespace TheProject
 		/**
 		 * \brief Entities that inhabit this State
 		 */
+		// TODO: Müssen das Heap-Objekte sein ?
 		std::vector<Entity*>* m_entities;
 
 
 		/**
 		 * \brief States that can be reached from this State
 		 */
+		 // TODO: Müssen das Heap-Objekte sein ?
 		std::vector<EState>* m_next;
 	};
 }
