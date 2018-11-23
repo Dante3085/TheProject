@@ -19,7 +19,6 @@ namespace TheProject
 		State(const std::string& name, std::vector<Entity*>* entities, std::vector<EState>* next);
 		~State();
 
-
 		/**
 		 * \brief Updates all Entities of this State
 		 */

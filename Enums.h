@@ -31,5 +31,10 @@ namespace TheProject
 	enum EAnimation
 	{
 		Idle,
+		GoLeft,
+		GoUp,
+		GoRight,
+		GoDown,
+		Attack
 	};
 }

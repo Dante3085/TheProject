@@ -35,12 +35,10 @@ namespace TheProject
 	{
 		// Delete all States inside FiniteStateMachine
 		std::map<EState, State*>::iterator it;
-
-		std::cout << "Test" << std::endl;
 		it = m_states->begin();
+
 		while(it != m_states->end())
 		{
-			std::cout << "Fist: " << std::endl;
 			std::cout << it->first << std::endl;
 			delete it->second;
 			it++;
@@ -69,16 +67,16 @@ namespace TheProject
 
 	bool FiniteStateMachine::change(EState state)
 	{
-		if (m_currentState == state)
-		{
-			std::cout << "@FiniteStateMachine.change(): Passed state is already active" << std::endl;
-			return false;
-		}
-
 		// Check if state is known to this FiniteStateMachine (http://www.cplusplus.com/reference/map/map/count/)
 		if (m_states->count(state) == 0)
 		{
 			std::cout << "@FiniteStateMachine.change(): FiniteStateMachine does not know passed state " << std::endl;
+			return false;
+		}
+
+		if (m_currentState == state)
+		{
+			std::cout << "@FiniteStateMachine.change(): Passed state \"" << m_states->at(state)->getName() << "\" is already active" << std::endl;
 			return false;
 		}
 
