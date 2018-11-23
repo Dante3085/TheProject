@@ -21,7 +21,8 @@ int main()
 	FiniteStateMachine fsm{ states, none, inventory };*/
 
 	sf::RenderWindow window{ sf::VideoMode{1920, 1080}, "TheProject" };
-	AnimatedSprite animSprite{ "adventurer.png", {100.0f, 100.0f} };
+	AnimatedSprite animSprite{ "adventurer.png", 50, 37, {100.0f, 100.0f} };
+	animSprite.addAnimation(Idle, 4, 0, 0);
 
 	while(window.isOpen())
 	{
@@ -55,7 +56,7 @@ int main()
 		animSprite.setDirection(dir);
 
 		// 60 fps
-		animSprite.update(1.0f / 60.0f);
+		animSprite.update(10.f);
 
 		manager.UpdatePreviousStates();
 
@@ -67,7 +68,7 @@ int main()
 	/**
 	 * \bug Wenn in obiger Schleife Return gedrückt wurde, wird das Programm nach Drücken von Escape in der Schleife ohne anzuhalten beendet.
 	 */
-	Utils::PauseConsole();
+	// Utils::PauseConsole();
 
 	return EXIT_SUCCESS;
 }

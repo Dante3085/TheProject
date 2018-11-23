@@ -1,13 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "DrawableEntity.h"
+#include "Enums.h"
 
 namespace TheProject
 {
 	class AnimatedSprite : public DrawableEntity
 	{
 	public:
-		AnimatedSprite(const std::string& spriteSheetLocation, const sf::Vector2f& pos);
+		AnimatedSprite(const std::string& spriteSheetLocation, int frameWidth, int frameHeight, const sf::Vector2f& pos);
 		~AnimatedSprite();
 
 		/**
@@ -27,6 +28,10 @@ namespace TheProject
 
 		void setDirection(const sf::Vector2f& dir);
 
+		void addAnimation(EAnimation name, int numFrames, int yRow, int indexFirstFrame);
+		void setAnimation(EAnimation name);
+		void playAnimation(float deltaTime);
+
 	private:
 
 		/**
@@ -38,5 +43,13 @@ namespace TheProject
 		sf::Texture m_texture;
 		sf::Vector2f m_pos;
 		sf::Vector2f m_vel = { 0.0f, 0.0f };
+
+		int m_currentFrameIndex;
+		EAnimation m_currentAnimation;
+		std::map<EAnimation, std::vector<sf::Rect<int>>> m_animations;
+		int m_frameWidth;
+		int m_frameHeight;
+		float m_elapsedMillis;
+		static constexpr int m_duration = 500;
 	};
 }

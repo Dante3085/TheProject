@@ -1,5 +1,9 @@
 #pragma once
 
+/**
+ * \attention Not every File needs all enums
+ */
+
 namespace TheProject
 {
 	/**
@@ -22,5 +26,10 @@ namespace TheProject
 		 * \brief Represents MainMenu State
 		 */
 		mainMenu,
+	};
+
+	enum EAnimation
+	{
+		Idle,
 	};
 }
