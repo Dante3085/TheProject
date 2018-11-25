@@ -15,12 +15,11 @@ int main()
 {
 	InputManager manager{};
 
-	sf::RenderWindow window{ sf::VideoMode{1280, 720}, "TheProject" };
+	sf::RenderWindow window{ sf::VideoMode{1920, 1080}, "TheProject" };
 
-	std::vector<std::string> spriteSheetLocations{ "Ressources/gothic-hero-idle.png", "Ressources/gothic-hero-run.png", 
+	std::vector<std::string> gothicHeroSpriteSheetLocations{ "Ressources/gothic-hero-idle.png", "Ressources/gothic-hero-run.png", 
 		"Ressources/gothic-hero-jump.png", "Ressources/gothic-hero-attack.png" };
-
-	AnimatedSprite* gothicHero = new AnimatedSprite{ spriteSheetLocations, {0.0f, 0.0f}, 300 };
+	AnimatedSprite* gothicHero = new AnimatedSprite{ gothicHeroSpriteSheetLocations, {0.0f, 0.0f}, 300 };
 	gothicHero->addAnimation(Idle, 0, 38, 48, 0, 0, 4);
 	gothicHero->addAnimation(GoLeft, 1, 66, 48, 0, 0, 12, 0.1f, true);
 	gothicHero->addAnimation(GoRight, 1, 66, 48, 0, 0, 12, 0.1f);
@@ -28,9 +27,8 @@ int main()
 	gothicHero->addAnimation(Attack, 3, 95, 48, 0, 0, 6);
 	gothicHero->setAnimation(Idle);
 
-	std::vector<std::string> spriteSheetLocations2{ "Ressources/swordsman.png" };
-
-	AnimatedSprite* swordsman = new AnimatedSprite{ spriteSheetLocations2, {0.f, 150.0f}, 300 };
+	std::vector<std::string> swordsmanSpriteSheetLocations{ "Ressources/swordsman.png" };
+	AnimatedSprite* swordsman = new AnimatedSprite{ swordsmanSpriteSheetLocations, {0.f, 150.0f}, 300 };
 	swordsman->addAnimation(Idle, 0, 48, 43, 433, 0, 4);
 	swordsman->addAnimation(GoLeft, 0, 50, 50, 100, 0, 8, .1f);
 	swordsman->addAnimation(GoUp, 0, 50, 50, 50, 0, 12, .1f);
@@ -38,7 +36,13 @@ int main()
 	swordsman->addAnimation(GoDown, 0, 50, 50, 0, 0, 12, .1f);
 	swordsman->setAnimation(Idle);
 
-	std::vector<Entity*>* entities = new std::vector<Entity*>{ gothicHero, swordsman };
+	std::vector<std::string> demonSpriteSheetLocations{ "Ressources/demon-idle.png", "Ressources/demon-attack.png" };
+	AnimatedSprite* demon = new AnimatedSprite{ demonSpriteSheetLocations, {0.f, 250.f}, 300 };
+	demon->addAnimation(Idle, 0, 160, 144, 0, 0, 6);
+	demon->addAnimation(Attack, 1, 240, 192, 0, 0, 11);
+	demon->setAnimation(Idle);
+
+	std::vector<Entity*>* entities = new std::vector<Entity*>{ gothicHero, swordsman, demon };
 	std::vector<EState>* next = new std::vector<EState>{ none };
 
 	std::map<EState, State*>* states = new std::map<EState, State*>{ {debugging, new State{"Debugging", entities, next}}, 
@@ -108,7 +112,10 @@ int main()
 			gothicHero->setAnimation(Jump);
 
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+		{
 			gothicHero->setAnimation(Attack);
+			demon->setAnimation(Attack);
+		}
 
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
@@ -121,11 +128,13 @@ int main()
 		{
 			gothicHero->setAnimation(Idle);
 			swordsman->setAnimation(Idle);
+			demon->setAnimation(Idle);
 		}
 		
 
 		gothicHero->setDirection(dir);
 		swordsman->setDirection(dir);
+		demon->setDirection(dir);
 
 		// Kriegt sekunden übergeben
 		fsm.update( deltaTime );

@@ -77,6 +77,8 @@ namespace TheProject
 		 */
 		inline const sf::Vector2f& getPosition() const;
 
+		inline void setDrawBounds(bool drawBounds);
+
 	private:
 
 		/**
@@ -124,11 +126,20 @@ namespace TheProject
 		 * \brief Stores how much time has passed since last setting a frame of the currentAnimation
 		 */
 		float m_elapsedSeconds;
+
+		/**
+		 * \brief Lines for drawing this AnimatedSprite's bounds
+		 */
+		std::vector<sf::RectangleShape> m_lines;
+
+		bool m_drawBounds;
 	};
 
 	inline void AnimatedSprite::draw(sf::RenderTarget& rt) const
 	{
 		rt.draw(m_sprite);
+		if (m_drawBounds)
+			DrawableEntity::drawBounds(rt, m_sprite.getGlobalBounds(), m_lines);
 	}
 
 	inline void AnimatedSprite::setDirection(const sf::Vector2f& dir)
@@ -145,4 +156,10 @@ namespace TheProject
 	{
 		return m_pos;
 	}
+
+	inline void AnimatedSprite::setDrawBounds(bool drawBounds)
+	{
+		m_drawBounds = drawBounds;
+	}
+
 }

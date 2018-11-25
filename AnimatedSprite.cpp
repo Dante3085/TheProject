@@ -6,7 +6,8 @@ namespace TheProject
 {
 	AnimatedSprite::AnimatedSprite(const std::vector<std::string> spriteSheetLocations, const sf::Vector2f& pos, float speed)
 		: m_pos{pos}, m_speed{speed}, m_currentFrameIndex{0}, m_currentAnimation{None}, m_animations{std::map<EAnimation, Animation>{}},
-	m_spriteSheets{std::vector<sf::Texture>{}}, m_vel{sf::Vector2f{0.f, 0.f}}, m_elapsedSeconds{0}
+	m_spriteSheets{std::vector<sf::Texture>{}}, m_vel{sf::Vector2f{0.f, 0.f}}, m_elapsedSeconds{0}, m_lines{std::vector<sf::RectangleShape>{sf::RectangleShape{}, sf::RectangleShape{},
+	sf::RectangleShape{}, sf::RectangleShape{}}}, m_drawBounds{true}
 	{
 		// Create / Load SpriteSheet Textures
 		for (std::string s : spriteSheetLocations)
@@ -24,6 +25,7 @@ namespace TheProject
 
 	AnimatedSprite::~AnimatedSprite()
 	{
+		
 	}
 
 	void AnimatedSprite::update(float deltaTime)
@@ -63,7 +65,6 @@ namespace TheProject
 
 		// increment timer
 		m_elapsedSeconds += deltaTime;
-		std::cout << "ElapsedSeconds: " << m_elapsedSeconds << std::endl;
 	}
 
 	void AnimatedSprite::setAnimation(EAnimation name)
