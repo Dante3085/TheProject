@@ -4,18 +4,21 @@
 
 namespace TheProject
 {
-
-	AnimatedSprite::AnimatedSprite(const std::string& spriteSheetLocation, int frameWidth, int frameHeight, const sf::Vector2f& pos,
-		float speed, float frameDelay)
-		: m_pos{ pos }, m_currentAnimation{Idle}, m_frameWidth{ frameWidth }, m_frameHeight{ frameHeight },
-		m_currentFrameIndex{ 0 },  m_vel({ 0.0f, 0.0f }), m_elapsedMillis{ 0 }, m_speed{ speed }, m_frameDelay{ frameDelay }
+	AnimatedSprite::AnimatedSprite(const std::vector<std::string> spriteSheetLocations, const sf::Vector2f& pos, float speed)
+		: m_pos{pos}, m_speed{speed}, m_currentFrameIndex{0}, m_currentAnimation{Idle}, m_animations{std::map<EAnimation, Animation>{}},
+	m_spriteSheets{std::vector<sf::Texture>{}}, m_vel{sf::Vector2f{0.f, 0.f}}, m_elapsedSeconds{0}
 	{
-		m_spriteSheet.loadFromFile(spriteSheetLocation);
-		m_sprite = sf::Sprite{ m_spriteSheet };
-		m_sprite.setTextureRect({ 0, 0, frameWidth, frameHeight });
-		m_sprite.setScale(3.f, 3.f);
-	}
+		// Create / Load SpriteSheet Textures
+		for (std::string s : spriteSheetLocations)
+		{
+			sf::Texture tex{};
+			tex.loadFromFile(s);
+			m_spriteSheets.push_back(tex);
+		}
 
+		// Default Spritesheet is first
+		m_sprite = sf::Sprite{ m_spriteSheets[0] };
+	}
 
 	AnimatedSprite::~AnimatedSprite()
 	{
@@ -28,29 +31,56 @@ namespace TheProject
 		playAnimation(deltaTime);
 	}
 
-	void AnimatedSprite::addAnimation(EAnimation name, int numFrames, int yRow, int indexFirstFrame)
+	void AnimatedSprite::addAnimation(EAnimation name, int indexSpriteSheet, int frameWidth, int frameHeight, int yRow, int indexFirstFrame,
+		int numFrames, float frameDelay, bool mirror)
 	{
-		std::vector<sf::Rect<int>> animation;
+		if (indexSpriteSheet < 0 || indexSpriteSheet >= m_spriteSheets.size())
+		{
+			std::cout << "@AnimatedSprite.addAnimation(): indexSpriteSheet is invalid!" << std::endl;
+			return;
+		}
 
+		std::vector<sf::Rect<int>> frames;
 		for (int i = 0; i < numFrames; i++)
-			animation.push_back(sf::Rect<int>{ (i + indexFirstFrame) * m_frameWidth, yRow, m_frameWidth, m_frameHeight });
-		
-		m_animations[name] = animation;
+			frames.push_back(sf::Rect<int>{ (i + indexFirstFrame) * frameWidth, yRow, frameWidth, frameHeight });
+		m_animations[name] = Animation{indexSpriteSheet, frames, frameDelay, mirror};
 	}
 
 	void AnimatedSprite::playAnimation(float deltaTime)
 	{
-		if (m_currentFrameIndex > m_animations[m_currentAnimation].size() - 1)
+		// Reset frameIndex if it has exceeded number of frames
+		if (m_currentFrameIndex > m_animations[m_currentAnimation].frames.size() - 1)
 			m_currentFrameIndex = 0;
 
-		if (m_elapsedMillis >= m_frameDelay)
+		// Go to next frame if frameDelay has passed, reset timer
+		if (m_elapsedSeconds > m_animations[m_currentAnimation].frameDelay)
 		{
-			m_sprite.setTextureRect(m_animations[m_currentAnimation][m_currentFrameIndex++]);
-			m_elapsedMillis = 0;
+			m_sprite.setTextureRect(m_animations[m_currentAnimation].frames[m_currentFrameIndex++]);
+			m_elapsedSeconds = 0;
+			std::cout << "CurrentFrameIndex: " << m_currentFrameIndex << std::endl;
 		}
 
-		m_elapsedMillis += deltaTime;
+		// increment timer
+		m_elapsedSeconds += deltaTime;
+		std::cout << "ElapsedSeconds: " << m_elapsedSeconds << std::endl;
+	}
 
-		std::cout << "Elapsed-Seconds: " << m_elapsedMillis << std::endl;
+	void AnimatedSprite::setAnimation(EAnimation name)
+	{
+		// Do nothing if passed animation is not known to this AnimatedSprite
+		if (m_animations.count(name) == 0)
+			return;
+
+		m_currentAnimation = name;
+
+		m_sprite.setTexture(m_spriteSheets[m_animations[m_currentAnimation].indexSpriteSheet]);
+
+		if (m_animations[m_currentAnimation].mirror)
+			m_sprite.setScale(-1.f, 1.f);
+		else
+			m_sprite.setScale(1.f, 1.f);
+
+		m_currentFrameIndex = 0;
+		m_elapsedSeconds = 0;
 	}
 }

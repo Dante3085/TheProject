@@ -2,9 +2,29 @@
 #include <SFML/Graphics.hpp>
 #include "DrawableEntity.h"
 #include "Enums.h"
+#include <iostream>
 
 namespace TheProject
 {
+	struct Animation
+	{
+		int indexSpriteSheet;
+		std::vector<sf::Rect<int>> frames;
+		float frameDelay;
+		bool mirror;
+
+		Animation()
+			: indexSpriteSheet{0}, frames{std::vector<sf::Rect<int>>{}}, frameDelay{.2f}, mirror{false}
+		{
+			std::cout << "Test" << std::endl;
+		}
+
+		Animation(int indexSpriteSheet, const std::vector<sf::Rect<int>>& frames, float frameDelay, bool mirror)
+			: indexSpriteSheet{indexSpriteSheet}, frames{frames}, frameDelay{frameDelay}, mirror{mirror}
+		{
+			std::cout << "Test2" << std::endl;
+		}
+	};
 
 	/**
 	 * \brief Uses the frames of a SpriteSheet to create a Sprite with Animation
@@ -13,8 +33,7 @@ namespace TheProject
 	class AnimatedSprite : public DrawableEntity
 	{
 	public:
-		AnimatedSprite(const std::string& spriteSheetLocation, int frameWidth, int frameHeight, const sf::Vector2f& pos,
-			float speed = 200.f, float frameDelay = .2f);
+		AnimatedSprite(const std::vector<std::string> spriteSheetLocations, const sf::Vector2f& pos, float speed = 200.f);
 		~AnimatedSprite();
 
 		/**
@@ -38,20 +57,15 @@ namespace TheProject
 		 */
 		inline void setDirection(const sf::Vector2f& dir);
 
-		/**
-		 * \brief Adds a new Animation to this AnimatedSprite
-		 * \param name Name of the new Animation
-		 * \param numFrames Number of frames of the new Animation
-		 * \param yRow Y-coordinate of the row in the SpriteSheet that the frames for the Animation are in
-		 * \param indexFirstFrame Index of first frame in row in the SpriteSheet that the frames for the Animation are in
-		 */
-		void addAnimation(EAnimation name, int numFrames, int yRow, int indexFirstFrame);
+		
+		void addAnimation(EAnimation name, int indexSpriteSheet, int frameWidth, int frameHeight, int yRow, int indexFirstFrame,
+			int numFrames, float frameDelay = .2f, bool mirror = false);
 
 		/**
 		 * \brief Sets the currentAnimation of this AnimatedSprite to animation
 		 * \param animation Animation that the currentAnimation of this AnimatedSprite will be set to
 		 */
-		inline void setAnimation(EAnimation animation);
+		void setAnimation(EAnimation animation);
 
 		/**
 		 * \brief Sets this AnimatedSprite's position to passed position
@@ -84,10 +98,7 @@ namespace TheProject
 		 */
 		sf::Sprite m_sprite;
 
-		/**
-		 * \brief SpriteSheet of this AnimatedSprite
-		 */
-		sf::Texture m_spriteSheet;
+		std::vector<sf::Texture> m_spriteSheets;
 
 		/**
 		 * \brief Position of this AnimatedSprite
@@ -109,30 +120,12 @@ namespace TheProject
 		 */
 		EAnimation m_currentAnimation;
 
-		/**
-		 * \brief All Animations registered on this AnimatedSprite
-		 */
-		std::map<EAnimation, std::vector<sf::Rect<int>>> m_animations;
-
-		/**
-		 * \brief Width of each frame of the SpriteSheet of this AnimatedSprite
-		 */
-		int m_frameWidth;
-
-		/**
-		 * \brief Height of each frame of the SpriteSheet of this AnimatedSprite
-		 */
-		int m_frameHeight;
+		std::map<EAnimation, Animation> m_animations;
 
 		/**
 		 * \brief Stores how much time has passed since last setting a frame of the currentAnimation
 		 */
-		float m_elapsedMillis;
-
-		/**
-		 * \brief Duration in seconds each frame stays on screen
-		 */
-		float m_frameDelay;
+		float m_elapsedSeconds;
 	};
 
 	inline void AnimatedSprite::draw(sf::RenderTarget& rt) const
@@ -145,15 +138,6 @@ namespace TheProject
 		m_vel = dir * m_speed;
 	}
 
-	inline void AnimatedSprite::setAnimation(EAnimation animation)
-	{
-		// Do nothing if passed animation is not known to this AnimatedSprite
-		if (m_animations.count(animation) == 0)
-			return;
-
-		m_currentAnimation = animation;
-	}
-
 	inline void AnimatedSprite::setPosition(const sf::Vector2f& position)
 	{
 		m_pos = position;
@@ -163,5 +147,4 @@ namespace TheProject
 	{
 		return m_pos;
 	}
-
 }
