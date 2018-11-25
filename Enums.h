@@ -23,6 +23,11 @@ namespace TheProject
 
 
 		/**
+		 * \brief Represents Debugging State
+		 */
+		debugging,
+
+		/**
 		 * \brief Represents MainMenu State
 		 */
 		mainMenu,
@@ -36,6 +41,7 @@ namespace TheProject
 		GoUp,
 		GoRight,
 		GoDown,
-		Attack
+		Attack,
+		Jump
 	};
 }

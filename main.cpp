@@ -17,18 +17,21 @@ int main()
 
 	sf::RenderWindow window{ sf::VideoMode{1280, 720}, "TheProject" };
 
-	std::vector<std::string> spriteSheetLocations{ "Ressources/gothic-hero-idle.png", "Ressources/gothic-hero-run.png" };
+	std::vector<std::string> spriteSheetLocations{ "Ressources/gothic-hero-idle.png", "Ressources/gothic-hero-run.png", 
+		"Ressources/gothic-hero-jump.png", "Ressources/gothic-hero-attack.png" };
 
 	AnimatedSprite* gothicHero = new AnimatedSprite{ spriteSheetLocations, {100.0f, 0.0f}, 300 };
 	gothicHero->addAnimation(Idle, 0, 38, 48, 0, 0, 4);
-	gothicHero->addAnimation(GoLeft, 1, 66, 48, 0, 0, 12, 0.1, true);
-	gothicHero->addAnimation(GoRight, 1, 66, 48, 0, 0, 12, 0.1);
+	gothicHero->addAnimation(GoLeft, 1, 66, 48, 0, 0, 12, 0.1f, true);
+	gothicHero->addAnimation(GoRight, 1, 66, 48, 0, 0, 12, 0.1f);
+	gothicHero->addAnimation(Jump, 2, 61, 77, 0, 0, 5, 0.2f);
+	gothicHero->addAnimation(Attack, 3, 95, 48, 0, 0, 6);
 	gothicHero->setAnimation(Idle);
 
 	std::vector<Entity*>* entities = new std::vector<Entity*>{ gothicHero };
 	std::vector<EState>* next = new std::vector<EState>{ none };
 
-	std::map<EState, State*>* states = new std::map<EState, State*>{ {mainMenu, new State{"MainMenu", entities, next}}, 
+	std::map<EState, State*>* states = new std::map<EState, State*>{ {debugging, new State{"Debugging", entities, next}}, 
 		{inventory, new State{"Inventory"}} };
 
 	FiniteStateMachine fsm{ states, none, inventory };
@@ -66,7 +69,7 @@ int main()
 		}
 
 		if (manager.OnKeyDown(Keyboard::Key::M))
-			fsm.change(mainMenu);
+			fsm.change(debugging);
 		else if (manager.OnKeyDown(Keyboard::Key::N))
 			fsm.change(none);
 
@@ -77,24 +80,28 @@ int main()
 			gothicHero->setAnimation(GoUp);
 		}
 
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		{
 			dir.y += 1.0f;
 			gothicHero->setAnimation(GoDown);
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
 			dir.x -= 1.0f;
 			gothicHero->setAnimation(GoLeft);
 		}
 
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+			gothicHero->setAnimation(Jump);
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+			gothicHero->setAnimation(Attack);
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
 			dir.x += 1.0f;
 			gothicHero->setAnimation(GoRight);
 		}
-		else
-			gothicHero->setAnimation(Idle);
 		
 
 		gothicHero->setDirection(dir);

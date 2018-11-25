@@ -8,14 +8,14 @@ namespace TheProject
 	State::State()
 		: m_name{ "UNNAMED" }, m_entities{ new std::vector<Entity*>{} }, m_next{ new std::vector<EState>{} }
 	{
-		m_next->push_back(mainMenu);
+		m_next->push_back(debugging);
 		m_next->push_back(inventory);
 	}
 
 	State::State(const std::string& name)
 		: m_name{ name }, m_entities(new std::vector<Entity*>{}), m_next{ new std::vector<EState>{} }
 	{
-		m_next->push_back(mainMenu);
+		m_next->push_back(debugging);
 		m_next->push_back(inventory);
 	}
 

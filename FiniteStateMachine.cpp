@@ -12,7 +12,7 @@ namespace TheProject
 	{
 		// inserts nur zum testen
 		m_states->insert(std::pair<EState, State*>(none, new State{"none"}));
-		m_states->insert(std::pair<EState, State*>(mainMenu, new State{"mainMenu"}));
+		m_states->insert(std::pair<EState, State*>(debugging, new State{"debugging"}));
 		m_states->insert(std::pair<EState, State*>(inventory, new State{"inventory"}));
 	}
 
