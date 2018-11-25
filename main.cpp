@@ -20,7 +20,7 @@ int main()
 	std::vector<std::string> spriteSheetLocations{ "Ressources/gothic-hero-idle.png", "Ressources/gothic-hero-run.png", 
 		"Ressources/gothic-hero-jump.png", "Ressources/gothic-hero-attack.png" };
 
-	AnimatedSprite* gothicHero = new AnimatedSprite{ spriteSheetLocations, {100.0f, 0.0f}, 300 };
+	AnimatedSprite* gothicHero = new AnimatedSprite{ spriteSheetLocations, {0.0f, 0.0f}, 300 };
 	gothicHero->addAnimation(Idle, 0, 38, 48, 0, 0, 4);
 	gothicHero->addAnimation(GoLeft, 1, 66, 48, 0, 0, 12, 0.1f, true);
 	gothicHero->addAnimation(GoRight, 1, 66, 48, 0, 0, 12, 0.1f);
@@ -28,7 +28,17 @@ int main()
 	gothicHero->addAnimation(Attack, 3, 95, 48, 0, 0, 6);
 	gothicHero->setAnimation(Idle);
 
-	std::vector<Entity*>* entities = new std::vector<Entity*>{ gothicHero };
+	std::vector<std::string> spriteSheetLocations2{ "Ressources/swordsman.png" };
+
+	AnimatedSprite* swordsman = new AnimatedSprite{ spriteSheetLocations2, {0.f, 150.0f}, 300 };
+	swordsman->addAnimation(Idle, 0, 48, 43, 433, 0, 4);
+	swordsman->addAnimation(GoLeft, 0, 50, 50, 100, 0, 8, .1f);
+	swordsman->addAnimation(GoUp, 0, 50, 50, 50, 0, 12, .1f);
+	swordsman->addAnimation(GoRight, 0, 50, 50, 100, 8, 8, .1f);
+	swordsman->addAnimation(GoDown, 0, 50, 50, 0, 0, 12, .1f);
+	swordsman->setAnimation(Idle);
+
+	std::vector<Entity*>* entities = new std::vector<Entity*>{ gothicHero, swordsman };
 	std::vector<EState>* next = new std::vector<EState>{ none };
 
 	std::map<EState, State*>* states = new std::map<EState, State*>{ {debugging, new State{"Debugging", entities, next}}, 
@@ -78,33 +88,44 @@ int main()
 		{
 			dir.y -= 1.0f;
 			gothicHero->setAnimation(GoUp);
+			swordsman->setAnimation(GoUp);
 		}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		{
 			dir.y += 1.0f;
 			gothicHero->setAnimation(GoDown);
+			swordsman->setAnimation(GoDown);
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
 			dir.x -= 1.0f;
 			gothicHero->setAnimation(GoLeft);
+			swordsman->setAnimation(GoLeft);
 		}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 			gothicHero->setAnimation(Jump);
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
 			gothicHero->setAnimation(Attack);
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
 			dir.x += 1.0f;
 			gothicHero->setAnimation(GoRight);
+			swordsman->setAnimation(GoRight);
+		}
+
+		else
+		{
+			gothicHero->setAnimation(Idle);
+			swordsman->setAnimation(Idle);
 		}
 		
 
 		gothicHero->setDirection(dir);
+		swordsman->setDirection(dir);
 
 		// Kriegt sekunden übergeben
 		fsm.update( deltaTime );
