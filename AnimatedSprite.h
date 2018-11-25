@@ -16,13 +16,11 @@ namespace TheProject
 		Animation()
 			: indexSpriteSheet{0}, frames{std::vector<sf::Rect<int>>{}}, frameDelay{.2f}, mirror{false}
 		{
-			std::cout << "Test" << std::endl;
 		}
 
 		Animation(int indexSpriteSheet, const std::vector<sf::Rect<int>>& frames, float frameDelay, bool mirror)
 			: indexSpriteSheet{indexSpriteSheet}, frames{frames}, frameDelay{frameDelay}, mirror{mirror}
 		{
-			std::cout << "Test2" << std::endl;
 		}
 	};
 

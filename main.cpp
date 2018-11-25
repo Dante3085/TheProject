@@ -21,11 +21,9 @@ int main()
 
 	AnimatedSprite* gothicHero = new AnimatedSprite{ spriteSheetLocations, {100.0f, 0.0f}, 300 };
 	gothicHero->addAnimation(Idle, 0, 38, 48, 0, 0, 4);
-	/*gothicHero->addAnimation(GoLeft, 12, 0, 0);
-	gothicHero->addAnimation(GoUp, 12, 0, 0);
-	gothicHero->addAnimation(GoRight, 12, 0, 0);
-	gothicHero->addAnimation(GoDown, 12, 0, 0);
-	gothicHero->addAnimation(Attack, 12, 0, 0);*/
+	gothicHero->addAnimation(GoLeft, 1, 66, 48, 0, 0, 12, 0.1, true);
+	gothicHero->addAnimation(GoRight, 1, 66, 48, 0, 0, 12, 0.1);
+	gothicHero->setAnimation(Idle);
 
 	std::vector<Entity*>* entities = new std::vector<Entity*>{ gothicHero };
 	std::vector<EState>* next = new std::vector<EState>{ none };
@@ -97,6 +95,7 @@ int main()
 		}
 		else
 			gothicHero->setAnimation(Idle);
+		
 
 		gothicHero->setDirection(dir);
 
