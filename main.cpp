@@ -42,7 +42,14 @@ int main()
 	demon->addAnimation(Attack, 1, 240, 192, 0, 0, 11);
 	demon->setAnimation(Idle);
 
-	std::vector<Entity*>* entities = new std::vector<Entity*>{ gothicHero, swordsman, demon };
+	std::vector<std::string> wizardSpriteSheetLocations{ "Ressources/wizard idle.png", "Ressources/wizard fly forward.png",
+	"Ressources/wizard death.png"};
+	AnimatedSprite* wizard = new AnimatedSprite{ wizardSpriteSheetLocations, {0.f, 500.f}, 300 };
+	wizard->addAnimation(Idle, 0, 80, 80, 0, 0, 10);
+	wizard->addAnimation(Attack, 1, 240, 192, 0, 0, 11);
+	wizard->setAnimation(Idle);
+
+	std::vector<Entity*>* entities = new std::vector<Entity*>{ gothicHero, swordsman, demon, wizard };
 	std::vector<EState>* next = new std::vector<EState>{ none };
 
 	std::map<EState, State*>* states = new std::map<EState, State*>{ {debugging, new State{"Debugging", entities, next}}, 

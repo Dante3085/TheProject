@@ -12,6 +12,12 @@ namespace TheProject
 		virtual ~DrawableEntity() {}
 		virtual void draw(sf::RenderTarget& rt) const = 0;
 
+		/**
+		 * \brief 
+		 * \param rt 
+		 * \param bounds 
+		 * \param lines 
+		 */
 		static void drawBounds(sf::RenderTarget& rt, sf::FloatRect bounds, std::vector<sf::RectangleShape> lines)
 		{
 			if (lines.size() != 4)

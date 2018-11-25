@@ -20,7 +20,7 @@ namespace TheProject
 		// Default Spritesheet is first
 		if (!m_spriteSheets.empty())
 			m_sprite = sf::Sprite{ m_spriteSheets[0] };
-		m_sprite.setScale(3.f, 3.f);
+		m_sprite.setScale(2.f, 2.f);
 	}
 
 	AnimatedSprite::~AnimatedSprite()
@@ -43,7 +43,6 @@ namespace TheProject
 			std::cout << "@AnimatedSprite.addAnimation(): indexSpriteSheet is invalid!" << std::endl;
 			return;
 		}
-
 		std::vector<sf::Rect<int>> frames;
 		for (int i = 0; i < numFrames; i++)
 			frames.push_back(sf::Rect<int>{ (i + indexFirstFrame) * frameWidth, yRow, frameWidth, frameHeight });
@@ -79,9 +78,9 @@ namespace TheProject
 		m_sprite.setTextureRect(m_animations[m_currentAnimation].frames[1]);
 
 		if (m_animations[m_currentAnimation].mirror)
-			m_sprite.setScale(-3.f, 3.f);
+			m_sprite.setScale(-2.f, 2.f);
 		else
-			m_sprite.setScale(3.f, 3.f);
+			m_sprite.setScale(2.f, 2.f);
 
 		m_elapsedSeconds = 0;
 		m_currentFrameIndex = 0;
