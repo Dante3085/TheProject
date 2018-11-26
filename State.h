@@ -8,7 +8,9 @@ namespace TheProject
 {
 
 	/**
-	 * \brief Könnte abstrakt sein
+	 * //TODO: siehe attention
+	 * \attention: Member brauchen nicht Heap-Objekte sein, da sie nicht länger als der State leben müssen
+	 * \brief: Represents a State in a FiniteStateMachine
 	 */
 	class State
 	{
@@ -17,13 +19,12 @@ namespace TheProject
 		// TODO: Sollte ich hier immer const refs übergeben ?
 		State(const std::string& name);
 		State(const std::string& name, std::vector<Entity*>* entities, std::vector<EState>* next);
-		~State();
+		virtual ~State();
 
 		/**
 		 * \brief Updates all Entities of this State
 		 */
 		virtual void update(float gameTime);
-
 
 		/**
 		 * \brief Draws all DrawableEntities of this State
@@ -44,24 +45,23 @@ namespace TheProject
 		 * \brief Returns Name of this State
 		 * \return Name of this State
 		 */
-		std::string getName() const;
+		inline std::string getName() const;
 
 		/**
 		 * \brief Returns std::vector with all Entities of this State
 		 * \return std::vector wit all Entities of this State
 		 */
-		std::vector<Entity*>* getEntities() const;
+		inline std::vector<Entity*>* getEntities() const;
 
 
 		/**
 		 * \brief Returns std::vector with EState "references" of all States that can be reached by this State
 		 * \return std::vector with EState "references" of all States that can be reached by this State
 		 */
-		std::vector<EState>* getNext() const;
+		inline std::vector<EState>* getNext() const;
 
 	private:
 
-		
 		/**
 		 * \brief Name of this State
 		 */
@@ -73,11 +73,25 @@ namespace TheProject
 		// TODO: Müssen das Heap-Objekte sein ?
 		std::vector<Entity*>* m_entities;
 
-
 		/**
 		 * \brief States that can be reached from this State
 		 */
 		 // TODO: Müssen das Heap-Objekte sein ?
 		std::vector<EState>* m_next;
 	};
+
+	inline std::vector<Entity*>* State::getEntities() const
+	{
+		return m_entities;
+	}
+
+	inline std::string State::getName() const
+	{
+		return m_name;
+	}
+
+	inline std::vector<EState>* State::getNext() const
+	{
+		return m_next;
+	}
 }

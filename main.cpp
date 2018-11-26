@@ -7,6 +7,7 @@
 #include "State.h"
 #include "AnimatedSprite.h"
 #include <chrono>
+#include "SceneState.h"
 
 using namespace sf;
 using namespace TheProject;
@@ -15,7 +16,7 @@ int main()
 {
 	InputManager manager{};
 
-	sf::RenderWindow window{ sf::VideoMode{1920, 1080}, "TheProject" };
+	sf::RenderWindow window{ sf::VideoMode{3240, 2160}, "TheProject" };
 
 	std::vector<std::string> gothicHeroSpriteSheetLocations{ "Ressources/gothic-hero-idle.png", "Ressources/gothic-hero-run.png", 
 		"Ressources/gothic-hero-jump.png", "Ressources/gothic-hero-attack.png" };
@@ -87,7 +88,8 @@ int main()
 		loadingSprite2, freezing, vortex, demon, gothicHero, swordsman};
 	std::vector<EState>* next = new std::vector<EState>{ none };
 
-	std::map<EState, State*>* states = new std::map<EState, State*>{ {debugging, new State{"Debugging", entities, next}}, 
+	std::map<EState, State*>* states = new std::map<EState, State*>{ {debugging, new SceneState{"Debugging", entities, next,
+	"Ressources/preview-old-dark-castle-interior-tileset.png", (int)window.getSize().x, (int)window.getSize().y}}, 
 		{inventory, new State{"Inventory"}} };
 
 	FiniteStateMachine fsm{ states, none, inventory };

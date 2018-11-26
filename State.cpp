@@ -65,7 +65,7 @@ namespace TheProject
 		std::cout << m_name << ": onExit()" << std::endl;
 	}
 
-	std::string State::getName() const
+	/*std::string State::getName() const
 	{
 		return m_name;
 	}
@@ -78,5 +78,5 @@ namespace TheProject
 	std::vector<EState>* State::getNext() const
 	{
 		return m_next;
-	}
+	}*/
 }
