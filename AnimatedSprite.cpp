@@ -35,7 +35,7 @@ namespace TheProject
 		playAnimation(deltaTime);
 	}
 
-	void AnimatedSprite::addAnimation(EAnimation name, int indexSpriteSheet, int frameWidth, int frameHeight, int yRow, int indexFirstFrame,
+	/*void AnimatedSprite::addAnimation(EAnimation name, int indexSpriteSheet, int frameWidth, int frameHeight, int yRow, int indexFirstFrame,
 		int numFrames, float frameDelay, bool mirror)
 	{
 		if (indexSpriteSheet < 0 || indexSpriteSheet >= m_spriteSheets.size())
@@ -47,6 +47,32 @@ namespace TheProject
 		for (int i = 0; i < numFrames; i++)
 			frames.push_back(sf::Rect<int>{ (i + indexFirstFrame) * frameWidth, yRow, frameWidth, frameHeight });
 		m_animations[name] = Animation{indexSpriteSheet, frames, frameDelay, mirror};
+	}*/
+
+	void AnimatedSprite::addAnimation(EAnimation name, int indexSpriteSheet, int frameWidth, int frameHeight, int yRow, int xCol,
+		int numFrames, float frameDelay, bool mirror)
+	{
+		if (indexSpriteSheet < 0 || indexSpriteSheet >= m_spriteSheets.size())
+		{
+			std::cout << "@AnimatedSprite.addAnimation(): indexSpriteSheet is invalid!" << std::endl;
+			return;
+		}
+		std::vector<sf::Rect<int>> frames;
+
+		int frame = 0;
+		int spriteSheetWidth = m_spriteSheets[indexSpriteSheet].getSize().x;
+
+		while(frame++ < numFrames)
+		{
+			if ((xCol * frameWidth) == spriteSheetWidth)
+			{
+				yRow++;
+				xCol = 0;
+			}
+			frames.push_back(sf::Rect<int>{ xCol++ * frameWidth, yRow * frameHeight, frameWidth, frameHeight});
+		}
+
+		m_animations[name] = Animation{ indexSpriteSheet, frames, frameDelay, mirror };
 	}
 
 	void AnimatedSprite::playAnimation(float deltaTime)
@@ -58,6 +84,7 @@ namespace TheProject
 		// Go to next frame if frameDelay has passed, reset timer
 		if (m_elapsedSeconds > m_animations[m_currentAnimation].frameDelay)
 		{
+			std::cout << "Frame: " << m_currentFrameIndex << std::endl;
 			m_sprite.setTextureRect(m_animations[m_currentAnimation].frames[m_currentFrameIndex++]);
 			m_elapsedSeconds = 0;
 		}

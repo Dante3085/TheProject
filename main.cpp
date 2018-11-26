@@ -49,7 +49,12 @@ int main()
 	wizard->addAnimation(Attack, 1, 240, 192, 0, 0, 11);
 	wizard->setAnimation(Idle);
 
-	std::vector<Entity*>* entities = new std::vector<Entity*>{ gothicHero, swordsman, demon, wizard };
+	std::vector<std::string> fireSpriteSheetLocations { "Ressources/11_fire_spritesheet.png" };
+	AnimatedSprite* fire = new AnimatedSprite{ fireSpriteSheetLocations, {0.f, 0.f}, 300 };
+	fire->addAnimation(Idle, 0, 100, 100, 0, 0, 61, .09f);
+	fire->setAnimation(Idle);
+
+	std::vector<Entity*>* entities = new std::vector<Entity*>{ fire };
 	std::vector<EState>* next = new std::vector<EState>{ none };
 
 	std::map<EState, State*>* states = new std::map<EState, State*>{ {debugging, new State{"Debugging", entities, next}}, 

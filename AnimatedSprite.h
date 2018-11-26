@@ -56,7 +56,7 @@ namespace TheProject
 		inline void setDirection(const sf::Vector2f& dir);
 
 		
-		void addAnimation(EAnimation name, int indexSpriteSheet, int frameWidth, int frameHeight, int yRow, int indexFirstFrame,
+		void addAnimation(EAnimation name, int indexSpriteSheet, int frameWidth, int frameHeight, int yRow, int xCol,
 			int numFrames, float frameDelay = .2f, bool mirror = false);
 
 		/**
