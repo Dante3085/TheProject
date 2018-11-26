@@ -82,6 +82,15 @@ namespace TheProject
 
 		inline void setDrawBounds(bool drawBounds);
 
+		inline void setAnimationFrameDelay(EAnimation name, float frameDelay);
+		inline float getAnimationFrameDelay(EAnimation name);
+
+		inline void setAnimationMirror(EAnimation name, bool mirror);
+		inline bool getAnimationMirror(EAnimation name);
+
+		inline void setAnimationReverse(EAnimation name, bool reverse);
+		inline bool getAnimationReverse(EAnimation name);
+
 	private:
 
 		/**
@@ -163,6 +172,36 @@ namespace TheProject
 	inline void AnimatedSprite::setDrawBounds(bool drawBounds)
 	{
 		m_drawBounds = drawBounds;
+	}
+
+	inline void AnimatedSprite::setAnimationFrameDelay(EAnimation name, float frameDelay)
+	{
+		m_animations[name].frameDelay = frameDelay;
+	}
+
+	inline float AnimatedSprite::getAnimationFrameDelay(EAnimation name)
+	{
+		return m_animations[name].frameDelay;
+	}
+
+	inline void AnimatedSprite::setAnimationMirror(EAnimation name, bool mirror)
+	{
+		m_animations[name].mirror = mirror;
+	}
+
+	inline bool AnimatedSprite::getAnimationMirror(EAnimation name)
+	{
+		return m_animations[name].mirror;
+	}
+
+	inline void AnimatedSprite::setAnimationReverse(EAnimation name, bool reverse)
+	{
+		m_animations[name].reverse = reverse;
+	}
+
+	inline bool AnimatedSprite::getAnimationReverse(EAnimation name)
+	{
+		return m_animations[name].reverse;
 	}
 
 }

@@ -35,20 +35,6 @@ namespace TheProject
 		playAnimation(deltaTime);
 	}
 
-	/*void AnimatedSprite::addAnimation(EAnimation name, int indexSpriteSheet, int frameWidth, int frameHeight, int yRow, int indexFirstFrame,
-		int numFrames, float frameDelay, bool mirror)
-	{
-		if (indexSpriteSheet < 0 || indexSpriteSheet >= m_spriteSheets.size())
-		{
-			std::cout << "@AnimatedSprite.addAnimation(): indexSpriteSheet is invalid!" << std::endl;
-			return;
-		}
-		std::vector<sf::Rect<int>> frames;
-		for (int i = 0; i < numFrames; i++)
-			frames.push_back(sf::Rect<int>{ (i + indexFirstFrame) * frameWidth, yRow, frameWidth, frameHeight });
-		m_animations[name] = Animation{indexSpriteSheet, frames, frameDelay, mirror};
-	}*/
-
 	void AnimatedSprite::addAnimation(EAnimation name, int indexSpriteSheet, int frameWidth, int frameHeight, int yRow, int xCol,
 		int numFrames, float frameDelay, bool mirror, bool reverse)
 	{

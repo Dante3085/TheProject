@@ -84,7 +84,7 @@ int main()
 	vortex->setAnimation(Idle);
 
 	std::vector<Entity*>* entities = new std::vector<Entity*>{ fire, phantom, bubbles, loadingSprite, 
-		loadingSprite2, freezing, vortex};
+		loadingSprite2, freezing, vortex, demon, gothicHero, swordsman};
 	std::vector<EState>* next = new std::vector<EState>{ none };
 
 	std::map<EState, State*>* states = new std::map<EState, State*>{ {debugging, new State{"Debugging", entities, next}}, 
@@ -166,13 +166,20 @@ int main()
 			swordsman->setAnimation(GoRight);
 		}
 
+		else if (manager.OnKeyDown(sf::Keyboard::R))
+		{
+			if (phantom->getAnimationReverse(Idle))
+				phantom->setAnimationReverse(Idle, false);
+			else
+				phantom->setAnimationReverse(Idle, true);
+		}
+
 		else
 		{
 			gothicHero->setAnimation(Idle);
 			swordsman->setAnimation(Idle);
 			demon->setAnimation(Idle);
 		}
-		
 
 		gothicHero->setDirection(dir);
 		swordsman->setDirection(dir);
