@@ -51,10 +51,25 @@ int main()
 
 	std::vector<std::string> fireSpriteSheetLocations { "Ressources/11_fire_spritesheet.png" };
 	AnimatedSprite* fire = new AnimatedSprite{ fireSpriteSheetLocations, {0.f, 0.f}, 300 };
-	fire->addAnimation(Idle, 0, 100, 100, 0, 0, 61, .09f);
+	fire->addAnimation(Idle, 0, 100, 100, 0, 0, 61, .05f);
 	fire->setAnimation(Idle);
 
-	std::vector<Entity*>* entities = new std::vector<Entity*>{ fire };
+	std::vector<std::string> phantomSpriteSheetLocations{ "Ressources/14_phantom_spritesheet.png" };
+	AnimatedSprite* phantom = new AnimatedSprite{ phantomSpriteSheetLocations, {200.f, 0.f}, 300 };
+	phantom->addAnimation(Idle, 0, 100, 100, 0, 0, 61, .05f);
+	phantom->setAnimation(Idle);
+
+	std::vector<std::string> bubbleSpriteSheetLocations{ "Ressources/20_magicbubbles_spritesheet.png" };
+	AnimatedSprite* bubbles = new AnimatedSprite{ bubbleSpriteSheetLocations, {400.f, 0.f}, 300 };
+	bubbles->addAnimation(Idle, 0, 100, 100, 0, 0, 61, .05f);
+	bubbles->setAnimation(Idle);
+
+	std::vector<std::string> loadingSpriteSpriteSheetLocations{ "Ressources/15_loading_spritesheet.png" };
+	AnimatedSprite* loadingSprite = new AnimatedSprite{ loadingSpriteSpriteSheetLocations, {600.f, 0.f}, 300 };
+	loadingSprite->addAnimation(Idle, 0, 100, 100, 0, 0, 61, .05f);
+	loadingSprite->setAnimation(Idle);
+
+	std::vector<Entity*>* entities = new std::vector<Entity*>{ fire, phantom, bubbles, loadingSprite };
 	std::vector<EState>* next = new std::vector<EState>{ none };
 
 	std::map<EState, State*>* states = new std::map<EState, State*>{ {debugging, new State{"Debugging", entities, next}}, 
