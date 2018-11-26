@@ -66,10 +66,25 @@ int main()
 
 	std::vector<std::string> loadingSpriteSpriteSheetLocations{ "Ressources/15_loading_spritesheet.png" };
 	AnimatedSprite* loadingSprite = new AnimatedSprite{ loadingSpriteSpriteSheetLocations, {600.f, 0.f}, 300 };
-	loadingSprite->addAnimation(Idle, 0, 100, 100, 0, 0, 61, .05f);
+	loadingSprite->addAnimation(Idle, 0, 100, 100, 0, 0, 60, .05f);
 	loadingSprite->setAnimation(Idle);
 
-	std::vector<Entity*>* entities = new std::vector<Entity*>{ fire, phantom, bubbles, loadingSprite };
+	AnimatedSprite* loadingSprite2 = new AnimatedSprite{ loadingSpriteSpriteSheetLocations, {800.f, 0.f}, 300 };
+	loadingSprite2->addAnimation(Idle, 0, 100, 100, 0, 0, 61, .05f, false, true);
+	loadingSprite2->setAnimation(Idle);
+
+	std::vector<std::string> freezingSpriteSheetLocations{ "Ressources/19_freezing_spritesheet.png" };
+	AnimatedSprite* freezing = new AnimatedSprite{ freezingSpriteSheetLocations, {1000.f, 0.f}, 300 };
+	freezing->addAnimation(Idle, 0, 100, 100, 0, 0, 86, .05f);
+	freezing->setAnimation(Idle);
+
+	std::vector<std::string> vortexSpriteSheetLocations{ "Ressources/13_vortex_spritesheet.png" };
+	AnimatedSprite* vortex = new AnimatedSprite{ vortexSpriteSheetLocations, {0.f, 200.f}, 300 };
+	vortex->addAnimation(Idle, 0, 100, 100, 0, 0, 60, .05f);
+	vortex->setAnimation(Idle);
+
+	std::vector<Entity*>* entities = new std::vector<Entity*>{ fire, phantom, bubbles, loadingSprite, 
+		loadingSprite2, freezing, vortex};
 	std::vector<EState>* next = new std::vector<EState>{ none };
 
 	std::map<EState, State*>* states = new std::map<EState, State*>{ {debugging, new State{"Debugging", entities, next}}, 
@@ -162,6 +177,7 @@ int main()
 		gothicHero->setDirection(dir);
 		swordsman->setDirection(dir);
 		demon->setDirection(dir);
+		phantom->setDirection(dir);
 
 		// Kriegt sekunden übergeben
 		fsm.update( deltaTime );

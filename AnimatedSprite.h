@@ -12,14 +12,17 @@ namespace TheProject
 		std::vector<sf::Rect<int>> frames;
 		float frameDelay;
 		bool mirror;
+		bool reverse;
 
 		Animation()
-			: indexSpriteSheet{0}, frames{std::vector<sf::Rect<int>>{}}, frameDelay{.2f}, mirror{false}
+			: indexSpriteSheet{0}, frames{std::vector<sf::Rect<int>>{}}, frameDelay{.2f}, mirror{false},
+		reverse{false}
 		{
 		}
 
-		Animation(int indexSpriteSheet, const std::vector<sf::Rect<int>>& frames, float frameDelay, bool mirror)
-			: indexSpriteSheet{indexSpriteSheet}, frames{frames}, frameDelay{frameDelay}, mirror{mirror}
+		Animation(int indexSpriteSheet, const std::vector<sf::Rect<int>>& frames, float frameDelay = .2f, bool mirror = false,
+			bool reverse = false)
+			: indexSpriteSheet{indexSpriteSheet}, frames{frames}, frameDelay{frameDelay}, mirror{mirror}, reverse{reverse}
 		{
 		}
 	};
@@ -57,7 +60,7 @@ namespace TheProject
 
 		
 		void addAnimation(EAnimation name, int indexSpriteSheet, int frameWidth, int frameHeight, int yRow, int xCol,
-			int numFrames, float frameDelay = .2f, bool mirror = false);
+			int numFrames, float frameDelay = .2f, bool mirror = false, bool reverse = false);
 
 		/**
 		 * \brief Sets the currentAnimation of this AnimatedSprite to animation
