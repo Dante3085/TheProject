@@ -39,7 +39,6 @@ namespace TheProject
 
 		while(it != m_states->end())
 		{
-			std::cout << it->first << std::endl;
 			delete it->second;
 			it++;
 		}

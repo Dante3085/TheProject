@@ -81,6 +81,10 @@ namespace TheProject
 		inline const sf::Vector2f& getPosition() const;
 
 		inline void setDrawBounds(bool drawBounds);
+		inline bool getDrawBounds() const;
+
+		inline void setScaleFactor(float scaleFactor);
+		inline float getScaleFactor() const;
 
 		inline void setAnimationFrameDelay(EAnimation name, float frameDelay);
 		inline float getAnimationFrameDelay(EAnimation name);
@@ -145,6 +149,8 @@ namespace TheProject
 		std::vector<sf::RectangleShape> m_lines;
 
 		bool m_drawBounds;
+
+		float m_scaleFactor;
 	};
 
 	inline void AnimatedSprite::draw(sf::RenderTarget& rt) const
@@ -172,6 +178,23 @@ namespace TheProject
 	inline void AnimatedSprite::setDrawBounds(bool drawBounds)
 	{
 		m_drawBounds = drawBounds;
+	}
+
+	inline bool AnimatedSprite::getDrawBounds() const
+	{
+		return m_drawBounds;
+	}
+
+	inline void AnimatedSprite::setScaleFactor(float scaleFactor)
+	{
+		m_scaleFactor = scaleFactor;
+		m_animations[m_currentAnimation].mirror ? m_sprite.setScale(-1.f * m_scaleFactor, m_scaleFactor) :
+			m_sprite.setScale(m_scaleFactor, m_scaleFactor);
+	}
+
+	inline float AnimatedSprite::getScaleFactor() const
+	{
+		return m_scaleFactor;
 	}
 
 	inline void AnimatedSprite::setAnimationFrameDelay(EAnimation name, float frameDelay)

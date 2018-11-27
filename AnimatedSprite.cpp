@@ -7,7 +7,7 @@ namespace TheProject
 	AnimatedSprite::AnimatedSprite(const std::vector<std::string> spriteSheetLocations, const sf::Vector2f& pos, float speed)
 		: m_pos{pos}, m_speed{speed}, m_currentFrameIndex{0}, m_currentAnimation{None}, m_animations{std::map<EAnimation, Animation>{}},
 	m_spriteSheets{std::vector<sf::Texture>{}}, m_vel{sf::Vector2f{0.f, 0.f}}, m_elapsedSeconds{0}, m_lines{std::vector<sf::RectangleShape>{sf::RectangleShape{}, sf::RectangleShape{},
-	sf::RectangleShape{}, sf::RectangleShape{}}}, m_drawBounds{false}
+	sf::RectangleShape{}, sf::RectangleShape{}}}, m_drawBounds{true}, m_scaleFactor{2.f}
 	{
 		// Create / Load SpriteSheet Textures
 		for (std::string s : spriteSheetLocations)
@@ -63,54 +63,45 @@ namespace TheProject
 
 	void AnimatedSprite::playAnimation(float deltaTime)
 	{
-		// Reset frameIndex(reverse) if it is 0
-		if (m_animations[m_currentAnimation].reverse)
-		{
-			if (m_currentFrameIndex == 0)
-				m_currentFrameIndex = m_animations[m_currentAnimation].frames.size() - 1;
-		}
-		// Reset frameIndex(non-reverse) if it has exceeded number of frames
-		else if (m_currentFrameIndex > m_animations[m_currentAnimation].frames.size() - 1)
-			m_currentFrameIndex = 0;
+		Animation currentAnimation = m_animations[m_currentAnimation];
 
-		// (reverse) Go to previous frame if frameDelay has passed, reset timer
-		if (m_animations[m_currentAnimation].reverse)
+		if (currentAnimation.reverse)
 		{
-			if (m_elapsedSeconds > m_animations[m_currentAnimation].frameDelay)
+			if (m_currentFrameIndex < 0)
+				m_currentFrameIndex = currentAnimation.frames.size() - 1;
+
+			if (m_elapsedSeconds > currentAnimation.frameDelay)
 			{
-				m_sprite.setTextureRect(m_animations[m_currentAnimation].frames[m_currentFrameIndex--]);
+				m_sprite.setTextureRect(currentAnimation.frames[m_currentFrameIndex--]);
 				m_elapsedSeconds = 0;
 			}
 		}
-		// (non-reverse)Go to next frame if frameDelay has passed, reset timer
-		else if (m_elapsedSeconds > m_animations[m_currentAnimation].frameDelay)
+		else
 		{
-			m_sprite.setTextureRect(m_animations[m_currentAnimation].frames[m_currentFrameIndex++]);
-			m_elapsedSeconds = 0;
-		}
+			if (m_currentFrameIndex > currentAnimation.frames.size() - 1)
+				m_currentFrameIndex = 0;
 
-		// increment timer
+			if (m_elapsedSeconds > currentAnimation.frameDelay)
+			{
+				m_sprite.setTextureRect(currentAnimation.frames[m_currentFrameIndex++]);
+				m_elapsedSeconds = 0;
+			}
+		}
 		m_elapsedSeconds += deltaTime;
 	}
 
 	void AnimatedSprite::setAnimation(EAnimation name)
 	{
-		// Do nothing if passed animation is not known to this AnimatedSprite or is already set as currentAnimation
 		if (m_currentAnimation == name || m_animations.count(name) == 0)
 			return;
 
 		m_currentAnimation = name;
+		Animation currentAnimation = m_animations[m_currentAnimation];
 
-		m_sprite.setTexture(m_spriteSheets[m_animations[m_currentAnimation].indexSpriteSheet]);
-		m_sprite.setTextureRect(m_animations[m_currentAnimation].frames[1]);
+		m_sprite.setTexture(m_spriteSheets[currentAnimation.indexSpriteSheet]);
+		m_sprite.setTextureRect(currentAnimation.frames[0]);
 
-		if (m_animations[m_currentAnimation].mirror)
-			m_sprite.setScale(-2.f, 2.f);
-		else
-			m_sprite.setScale(2.f, 2.f);
-
-		// Set CurrentFrameIndex to last frame if reverse is true
-		if (m_animations[m_currentAnimation].reverse)
-			m_currentFrameIndex = m_animations[m_currentAnimation].frames.size() - 1;
+		currentAnimation.mirror ? m_sprite.setScale(-1.f * m_scaleFactor, m_scaleFactor) : 
+		m_sprite.setScale(m_scaleFactor, m_scaleFactor);
 	}
 }

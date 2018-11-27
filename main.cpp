@@ -57,7 +57,7 @@ int main()
 
 	std::vector<std::string> phantomSpriteSheetLocations{ "Ressources/14_phantom_spritesheet.png" };
 	AnimatedSprite* phantom = new AnimatedSprite{ phantomSpriteSheetLocations, {200.f, 0.f}, 300 };
-	phantom->addAnimation(Idle, 0, 100, 100, 0, 0, 61, .05f);
+	phantom->addAnimation(Idle, 0, 100, 100, 0, 0, 60, .08f);
 	phantom->setAnimation(Idle);
 
 	std::vector<std::string> bubbleSpriteSheetLocations{ "Ressources/20_magicbubbles_spritesheet.png" };
@@ -83,6 +83,7 @@ int main()
 	AnimatedSprite* vortex = new AnimatedSprite{ vortexSpriteSheetLocations, {0.f, 200.f}, 300 };
 	vortex->addAnimation(Idle, 0, 100, 100, 0, 0, 60, .05f);
 	vortex->setAnimation(Idle);
+	vortex->setScaleFactor(20.f);
 
 	std::vector<Entity*>* entities = new std::vector<Entity*>{ fire, phantom, bubbles, loadingSprite, 
 		loadingSprite2, freezing, vortex, demon, gothicHero, swordsman};
@@ -90,7 +91,7 @@ int main()
 
 	std::map<EState, State*>* states = new std::map<EState, State*>{ {debugging, new SceneState{"Debugging", entities, next,
 	"Ressources/preview-old-dark-castle-interior-tileset.png", (int)window.getSize().x, (int)window.getSize().y}}, 
-		{inventory, new State{"Inventory"}} };
+		{none, new SceneState{"Inventory", "Ressources/gothic-castle-preview.png", (int)window.getSize().x, (int)window.getSize().y}} };
 
 	FiniteStateMachine fsm{ states, none, inventory };
 
@@ -107,9 +108,6 @@ int main()
 		sf::Event event;
 		while(window.pollEvent(event))
 		{
-			//// Close Window
-			//if (event.type == sf::Event::Closed)
-			//	window.close();
 
 			if (manager.OnKeyDown(Keyboard::Key::Escape))
 				window.close();
