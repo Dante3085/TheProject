@@ -1,4 +1,6 @@
-#pragma once
+#ifndef COLLISION_MANAGER_H
+#define COLLISION_MANAGER_H
+
 #include <vector>
 #include "DrawableEntity.h"
 
@@ -16,3 +18,4 @@ namespace TheProject
 		std::vector<DrawableEntity*> m_drawableEntities;
 	};
 }
+#endif

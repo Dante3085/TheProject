@@ -1,4 +1,6 @@
-#pragma once
+#ifndef STATE_H
+#define STATE_H
+
 #include "Entity.h"
 #include "Enums.h"
 #include <vector>
@@ -95,3 +97,4 @@ namespace TheProject
 		return m_next;
 	}
 }
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FINITE_STATE_MACHINE_H
+#define FINITE_STATE_MACHINE_H
 
 #include "Enums.h"
 #include <map>
@@ -102,3 +103,4 @@ namespace TheProject
 		EState m_endState;
 	};
 }
+#endif

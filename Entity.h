@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENTITY_H
+#define ENTITY_H
 
 namespace TheProject
 {
@@ -11,3 +12,4 @@ namespace TheProject
 	private:
 	};
 }
+#endif

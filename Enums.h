@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENUMS_H
+#define ENUMS_H
 
 /**
  * \attention Not every File needs all enums
@@ -45,3 +46,4 @@ namespace TheProject
 		Jump
 	};
 }
+#endif

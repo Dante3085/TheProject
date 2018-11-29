@@ -1,7 +1,10 @@
-#pragma once
+#ifndef DRAWABLE_ENTITY_H
+#define DRAWABLE_ENTITY_H
+
 #include "Entity.h"
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
+
 #include <iostream>
 
 namespace TheProject
@@ -59,3 +62,4 @@ namespace TheProject
 		}
 	};
 }
+#endif

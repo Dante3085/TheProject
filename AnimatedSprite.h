@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ANIMATED_SPRITE_H
+#define ANIMATED_SPRITE_H
+
 #include <SFML/Graphics.hpp>
 #include "DrawableEntity.h"
 #include "Enums.h"
@@ -252,3 +254,4 @@ namespace TheProject
 		return m_boundingBoxColor;
 	}
 }
+#endif

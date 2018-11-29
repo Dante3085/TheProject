@@ -1,4 +1,6 @@
-#pragma once
+#ifndef SCENE_STATE_H
+#define SCENE_STATE_H
+
 #include "State.h"
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
@@ -23,3 +25,4 @@ namespace TheProject
 		sf::Texture m_backgroundTex;
 	};
 }
+#endif

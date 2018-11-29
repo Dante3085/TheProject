@@ -81,13 +81,13 @@ int main()
 	freezing->setAnimation(Idle);
 
 	std::vector<std::string> vortexSpriteSheetLocations{ "Ressources/13_vortex_spritesheet.png" };
-	AnimatedSprite* vortex = new AnimatedSprite{ vortexSpriteSheetLocations, {0.f, 200.f}, 300 };
+	AnimatedSprite* vortex = new AnimatedSprite{ vortexSpriteSheetLocations, {0.f, 205.f}, 300 };
 	vortex->addAnimation(Idle, 0, 100, 100, 0, 0, 60, .05f);
 	vortex->setAnimation(Idle);
 
-	CollisionManager* colMan = new CollisionManager{ {fire, phantom} };
+	CollisionManager* colMan = new CollisionManager{ {fire, phantom, vortex} };
 
-	std::vector<Entity*>* entities = new std::vector<Entity*>{ fire, phantom, colMan};
+	std::vector<Entity*>* entities = new std::vector<Entity*>{ fire, phantom, colMan, vortex};
 	std::vector<EState>* next = new std::vector<EState>{ none };
 
 	std::map<EState, State*>* states = new std::map<EState, State*>{ {debugging, new SceneState{"Debugging", entities, next,
