@@ -62,6 +62,8 @@ namespace TheProject
 		void addAnimation(EAnimation name, int indexSpriteSheet, int frameWidth, int frameHeight, int yRow, int xCol,
 			int numFrames, float frameDelay = .2f, bool mirror = false, bool reverse = false);
 
+		void handleCollision() override;
+
 		/**
 		 * \brief Sets the currentAnimation of this AnimatedSprite to animation
 		 * \param animation Animation that the currentAnimation of this AnimatedSprite will be set to
@@ -94,6 +96,11 @@ namespace TheProject
 
 		inline void setAnimationReverse(EAnimation name, bool reverse);
 		inline bool getAnimationReverse(EAnimation name);
+
+		inline sf::FloatRect getBounds() override;
+
+		inline void setBoundingBoxColor(sf::Color color) override;
+		inline sf::Color getBoundingBoxColor() override;
 
 	private:
 
@@ -151,13 +158,16 @@ namespace TheProject
 		bool m_drawBounds;
 
 		float m_scaleFactor;
+
+		sf::Color m_boundingBoxColor;
 	};
 
 	inline void AnimatedSprite::draw(sf::RenderTarget& rt) const
 	{
 		rt.draw(m_sprite);
 		if (m_drawBounds)
-			DrawableEntity::drawBounds(rt, m_sprite.getGlobalBounds(), m_lines);
+			DrawableEntity::drawBounds(rt, m_sprite.getGlobalBounds(), 
+				m_lines, m_boundingBoxColor);
 	}
 
 	inline void AnimatedSprite::setDirection(const sf::Vector2f& dir)
@@ -227,4 +237,18 @@ namespace TheProject
 		return m_animations[name].reverse;
 	}
 
+	inline sf::FloatRect AnimatedSprite::getBounds()
+	{
+		return m_sprite.getGlobalBounds();
+	}
+
+	inline void AnimatedSprite::setBoundingBoxColor(sf::Color color)
+	{
+		m_boundingBoxColor = color;
+	}
+
+	inline sf::Color AnimatedSprite::getBoundingBoxColor()
+	{
+		return m_boundingBoxColor;
+	}
 }

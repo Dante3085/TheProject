@@ -5,9 +5,10 @@
 namespace TheProject
 {
 	AnimatedSprite::AnimatedSprite(const std::vector<std::string> spriteSheetLocations, const sf::Vector2f& pos, float speed)
-		: m_pos{pos}, m_speed{speed}, m_currentFrameIndex{0}, m_currentAnimation{None}, m_animations{std::map<EAnimation, Animation>{}},
-	m_spriteSheets{std::vector<sf::Texture>{}}, m_vel{sf::Vector2f{0.f, 0.f}}, m_elapsedSeconds{0}, m_lines{std::vector<sf::RectangleShape>{sf::RectangleShape{}, sf::RectangleShape{},
-	sf::RectangleShape{}, sf::RectangleShape{}}}, m_drawBounds{true}, m_scaleFactor{2.f}
+		: m_speed{speed}, m_spriteSheets{std::vector<sf::Texture>{}}, m_pos{pos}, m_vel{sf::Vector2f{0.f, 0.f}}, m_currentFrameIndex{0},
+		  m_currentAnimation{None}, m_animations{std::map<EAnimation, Animation>{}}, m_elapsedSeconds{0}, 
+		  m_lines{std::vector<sf::RectangleShape>{sf::RectangleShape{}, sf::RectangleShape{}, sf::RectangleShape{}, sf::RectangleShape{}}}, 
+		  m_drawBounds{true}, m_scaleFactor{2.f}, m_boundingBoxColor(sf::Color::Blue)
 	{
 		// Create / Load SpriteSheet Textures
 		for (std::string s : spriteSheetLocations)
@@ -20,7 +21,7 @@ namespace TheProject
 		// Default Spritesheet is first
 		if (!m_spriteSheets.empty())
 			m_sprite = sf::Sprite{ m_spriteSheets[0] };
-		m_sprite.setScale(2.f, 2.f);
+		m_sprite.setScale(m_scaleFactor, m_scaleFactor);
 	}
 
 	AnimatedSprite::~AnimatedSprite()
@@ -59,6 +60,11 @@ namespace TheProject
 		}
 
 		m_animations[name] = Animation{ indexSpriteSheet, frames, frameDelay, mirror, reverse };
+	}
+
+	void AnimatedSprite::handleCollision()
+	{
+		m_boundingBoxColor = sf::Color::Red;
 	}
 
 	void AnimatedSprite::playAnimation(float deltaTime)

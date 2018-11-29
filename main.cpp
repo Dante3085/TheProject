@@ -8,6 +8,7 @@
 #include "AnimatedSprite.h"
 #include <chrono>
 #include "SceneState.h"
+#include "CollisionManager.h"
 
 using namespace sf;
 using namespace TheProject;
@@ -83,10 +84,10 @@ int main()
 	AnimatedSprite* vortex = new AnimatedSprite{ vortexSpriteSheetLocations, {0.f, 200.f}, 300 };
 	vortex->addAnimation(Idle, 0, 100, 100, 0, 0, 60, .05f);
 	vortex->setAnimation(Idle);
-	vortex->setScaleFactor(20.f);
 
-	std::vector<Entity*>* entities = new std::vector<Entity*>{ fire, phantom, bubbles, loadingSprite, 
-		loadingSprite2, freezing, vortex, demon, gothicHero, swordsman};
+	CollisionManager* colMan = new CollisionManager{ {fire, phantom} };
+
+	std::vector<Entity*>* entities = new std::vector<Entity*>{ fire, phantom, colMan};
 	std::vector<EState>* next = new std::vector<EState>{ none };
 
 	std::map<EState, State*>* states = new std::map<EState, State*>{ {debugging, new SceneState{"Debugging", entities, next,
@@ -181,9 +182,6 @@ int main()
 			demon->setAnimation(Idle);
 		}
 
-		gothicHero->setDirection(dir);
-		swordsman->setDirection(dir);
-		demon->setDirection(dir);
 		phantom->setDirection(dir);
 
 		// Kriegt sekunden übergeben
